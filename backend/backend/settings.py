@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-$dz__s@u(2hwm7^jwuc=%lp_%saa=46#q2$b19jck2l)f=rz^y
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'professional_portfolio_app',
 ]
 
 MIDDLEWARE = [
@@ -47,6 +49,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'django.contrib.auth.context_processors.auth',
+
 ]
 
 ROOT_URLCONF = 'backend.urls'
@@ -80,6 +85,18 @@ DATABASES = {
     }
 }
 
+#code for postgreSQL
+"""
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'your_database_name',
+        'USER': 'your_database_user',
+        'PASSWORD': 'your_database_password',
+        'HOST': 'localhost',  # Set to the host where your PostgreSQL server is running
+        'PORT': '5432',      # Set to the port used by your PostgreSQL server
+    }
+"""
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -121,3 +138,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",  # Add your React frontend URL
+]
