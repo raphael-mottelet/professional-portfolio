@@ -1,3 +1,5 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Education, Experience, Project, SocialLink
+
+admin.site.register(Education, Experience, Project, SocialLink)
