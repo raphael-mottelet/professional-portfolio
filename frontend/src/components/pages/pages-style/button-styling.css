@@ -1,0 +1,51 @@
+.todo-edit,
+.todo-delete {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.todo-edit:hover,
+.todo-delete:hover {
+  transform: scale(1.2);
+}
+.todo-delete {
+  color: #430b0b;
+  font-size: 1.4rem;
+}
+
+.todo-edit {
+  color: #376c2c;
+  font-size: 1.4rem;
+}
+
+input[type="checkbox"] {
+    appearance: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid rgb(0, 0, 0);
+    outline: none;
+    transition: all 0.3s ease;
+    position: relative;
+    margin-right: 10px;
+  }
+  
+  input[type="checkbox"]:checked {
+    border-color: #000000;
+    background-color: #de8888bb;
+  }
+  
+  input[type="checkbox"]:checked::before {
+    content: "\f00c";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: #fff;
+    font-size: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  

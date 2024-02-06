@@ -1,0 +1,104 @@
+.home-container{
+    font-size: 1cm;
+    height: fit-content;
+    background: #8A2387;
+    background: -webkit-linear-gradient(to right, #F27121, #E94057, #8A2387);
+    background: linear-gradient(to right, #F27121, #E94057, #8A2387); 
+    }
+
+    .form-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin-top: -200px;
+    }
+    
+    .todo-input {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      background-color: #ffffff;
+      box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      border-radius: 10px;
+      width: 100%;
+      max-width: 500px;
+    }
+    
+    .todo-input input[type="text"] {
+      border: none;
+      border-bottom: 2px solid #888888;
+      width: 100%;
+      font-size: 18px;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+    
+    .todo-field {
+      border: none;
+      background-color: #989898;
+      color: #ffffff;
+      padding: 10px 20px;
+      font-size: 18px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+    }
+    
+    .todo-field:hover {
+      background-color: #379a7b;
+    }
+    
+    
+    
+    .todo-container {
+        display: flex; /* code styling the main items container */
+        justify-content: center;
+        align-items: center;
+        height: 100vh; 
+        margin-top: -600px;
+    
+      }
+      
+      .todo-content {
+        display: flex; 
+        align-items: center; 
+        margin: 0 10px;
+        margin-top: 5px;
+        height: 1.8cm;
+        
+        border-radius: 10px;
+        border-left: 1px solid black;
+        border-right: 1px solid black;
+        border-bottom: 1px solid black;
+        border-top: 1px solid black;
+
+        display: flex; 
+        align-items: center;
+      }
+
+      .todo-content:hover {
+        backdrop-filter: blur(5px);
+        background-color: rgba(255, 255, 255, 0.5);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        opacity: 0.7;
+      }
+      
+      .todo-content input,
+      .todo-content .todo-li,
+      .todo-content .home-button {
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 10px;
+      }
+      
+      .todo-content .home-button button {
+        margin-left: 10px;
+      }
+      
+
+.todo-li {
+    list-style: none;
+}
