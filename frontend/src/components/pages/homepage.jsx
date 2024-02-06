@@ -10,10 +10,13 @@ import './pages-style/button-styling.css';
 function Homepage() {
 
   const url = 'http://127.0.0.1:8000/';
-  const [experience, setExperience] = useState([]);
+  const [experiences, setExperiences] = useState([]);
 
   const [inputExperience, setInputExperience] = useState('');
+  const [inputExperienceTitle, setInputExperienceTitle] = useState('');
   const [inputExperienceDescription, setInputExperienceDescription] = useState('');
+  const [inputExperienceLocation, setInputExperienceinputExperienceTitle] = useState('');
+  const [inputExperienceStatus, setinputExperienceStatusn] = useState('');
   const [activeExperience, setactiveExperience] = useState(null);
 
   const getAllExperiences = () => {
@@ -116,7 +119,7 @@ Link supposed to send the user to the view
             <input 
               type="text" 
               placeholder="Ajoutez un Experience"
-              value={inputExperience}
+              value={inputExperienceTitle}
               onChange={e => handleChange(e)}
               />
 
@@ -124,6 +127,20 @@ Link supposed to send the user to the view
               type="text" 
               placeholder="Ajoutez une description"
               value={inputExperienceDescription}
+              onChange={f => DescriptionChange(f)}
+              />
+
+            <input 
+              type="text" 
+              placeholder="Ajoutez une description"
+              value={inputExperienceLocation}
+              onChange={f => DescriptionChange(f)}
+              />
+
+            <input 
+              type="text" 
+              placeholder="Ajoutez une description"
+              value={inputExperienceStatus}
               onChange={f => DescriptionChange(f)}
               />
 
@@ -140,7 +157,7 @@ Link supposed to send the user to the view
       <div className='Experience-container'>
         <ul>
           {
-            Experiences.map(task => {
+            experiences.map(task => {
 
               return (
                 <div className='Experience-content'>
