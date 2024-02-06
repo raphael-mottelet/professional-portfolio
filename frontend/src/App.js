@@ -1,9 +1,9 @@
 import { Route } from 'react-router';
 
 import HomePage from './components/pages/homepage'
-import TodoDetail from './components/pages/todo-page';
+import EducationDetails from './components/pages/education-page';
 
-<Route path="/todo/:id" component={TodoDetail} />
+<Route path="/experiecnce/:id" component={EducationDetails} />
 
 function App() {
   return (
