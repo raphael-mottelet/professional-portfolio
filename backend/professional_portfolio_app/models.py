@@ -1,31 +1,44 @@
 from django.db import models
+from django.utils import timezone
+import uuid
+
+from django.db import models
 
 class Experience(models.Model):
-    Experience_id = models.AutoField(primary_key=True)
     date = models.CharField(max_length=50)
-    imageSrc = models.ImageField(upload_to='experience_images/')  # Assuming imageSrc is an image file
+    imageSrc = models.ImageField(upload_to='experience_images/', default='default_image.jpg')
     title = models.CharField(max_length=255)
     location = models.CharField(max_length=255)
     description = models.TextField()
 
+    def __str__(self):
+        return self.title
+
+
 class Education(models.Model):
-    Education_id = models.AutoField(primary_key=True)
     date = models.CharField(max_length=50)
-    imageSrc = models.ImageField(upload_to='education_images/')  # Assuming imageSrc is an image file
+    imageSrc = models.ImageField(upload_to='education_images/')
     title = models.CharField(max_length=255)
     level = models.CharField(max_length=255)
     location = models.CharField(max_length=255)
     description = models.TextField()
 
+    def __str__(self):
+        return self.title
+    
 class Project(models.Model):
-    Project_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=255)
-    imageSrc = models.ImageField(upload_to='project_images/')  # Assuming imageSrc is an image file
+    imageSrc = models.ImageField(upload_to='project_images/')
     techs = models.CharField(max_length=255)
     github = models.URLField(blank=True, null=True)
 
+    def __str__(self):
+        return self.name
+
 class SocialLink(models.Model):
-    Social_link_id = models.AutoField(primary_key=True)
-    iconSrc = models.CharField(max_length=255)  # Assuming iconSrc is a URL
+    iconSrc = models.CharField(max_length=255)
     name = models.CharField(max_length=255)
     link = models.URLField(blank=True, null=True)
+
+    def __str__(self):
+        return self.name
