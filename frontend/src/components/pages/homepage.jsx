@@ -10,19 +10,16 @@ import './pages-style/button-styling.css';
 function Homepage() {
 
   const url = 'http://127.0.0.1:8000/';
-  const [experiences, setExperiences] = useState([]);
+  const [Experience, setExperience] = useState([]);
 
-  const [inputExperience, setInputExperience] = useState('');
   const [inputExperienceTitle, setInputExperienceTitle] = useState('');
-  const [inputExperienceDescription, setInputExperienceDescription] = useState('');
-  const [inputExperienceLocation, setInputExperienceinputExperienceTitle] = useState('');
-  const [inputExperienceStatus, setinputExperienceStatusn] = useState('');
+  const [inputExperienceTitleDescription, setInputExperienceTitleDescription] = useState('');
   const [activeExperience, setactiveExperience] = useState(null);
 
-  const getAllExperiences = () => {
+  const getAllExperience = () => {
     axios.get(url + 'experience/list/')
       .then(res => {
-        setExperiences(res.data)
+        setExperience(res.data)
         console.log(res.data)
       })
       .catch (err => {
@@ -35,7 +32,7 @@ function Homepage() {
       'title': task.title,
       'status': !task.status
     }).then(res => {
-      getAllExperiences()
+      getAllExperience()
     }).then(err => {
       console.error(err)
     })
@@ -46,12 +43,12 @@ function Homepage() {
 
     if(activeExperience == null) {
 
-    axios.post(url+ 'experience/add/',{
-      'title': inputExperience,
-      'description': inputExperienceDescription,
+    axios.post(url+ 'experience/create/',{
+      'title': inputExperienceTitle,
+      'description': inputExperienceTitleDescription,
       'status': false
     }).then(res => {
-      getAllExperiences()
+      getAllExperience()
     }).then(err => {
       console.error(err)
     })
@@ -59,13 +56,13 @@ function Homepage() {
   }else{
 
     axios.put(url+ `experience/${activeExperience.id}/update/`,{
-      'title': inputExperience,
-      'description': inputExperienceDescription,
+      'title': inputExperienceTitle,
+      'description': inputExperienceTitleDescription,
       'status': activeExperience.status
     }).then(res => {
-      setInputExperience()
-      setInputExperienceDescription()
-      getAllExperiences()
+      setInputExperienceTitle()
+      setInputExperienceTitleDescription()
+      getAllExperience()
     }).then(err => {
       console.error(err)
     })
@@ -73,14 +70,14 @@ function Homepage() {
 
   const updateExperience = task => {
     setactiveExperience(task)
-    setInputExperience(task.title)
-    setInputExperienceDescription(task.description)
+    setInputExperienceTitle(task.title)
+    setInputExperienceTitleDescription(task.description)
   }
 
   const deleteExperience = task => {
-    axios.delete(url+`Experience/${task.id}/destroy/`)
+    axios.delete(url+`experience/${task.id}/destroy/`)
     .then(res => {
-      getAllExperiences()
+      getAllExperience()
     })
     .catch(err => {
       console.error(err)
@@ -88,17 +85,17 @@ function Homepage() {
   }
 
   const handleChange =(e) => {
-    setInputExperience(e.target.value)
-    console.log(inputExperience)
+    setInputExperienceTitle(e.target.value)
+    console.log(inputExperienceTitle)
   }
 
   const DescriptionChange =(f) => {
-    setInputExperienceDescription(f.target.value)
-    console.log(inputExperienceDescription)
+    setInputExperienceTitleDescription(f.target.value)
+    console.log(inputExperienceTitleDescription)
   }
 
   useEffect(() => {
-    getAllExperiences()
+    getAllExperience()
   },[])
 
 
@@ -118,7 +115,7 @@ Link supposed to send the user to the view
           <div className='Experience-input'>
             <input 
               type="text" 
-              placeholder="Ajoutez un Experience"
+              placeholder="Ajoutez un titre"
               value={inputExperienceTitle}
               onChange={e => handleChange(e)}
               />
@@ -126,27 +123,13 @@ Link supposed to send the user to the view
             <input 
               type="text" 
               placeholder="Ajoutez une description"
-              value={inputExperienceDescription}
-              onChange={f => DescriptionChange(f)}
-              />
-
-            <input 
-              type="text" 
-              placeholder="Ajoutez une description"
-              value={inputExperienceLocation}
-              onChange={f => DescriptionChange(f)}
-              />
-
-            <input 
-              type="text" 
-              placeholder="Ajoutez une description"
-              value={inputExperienceStatus}
+              value={inputExperienceTitleDescription}
               onChange={f => DescriptionChange(f)}
               />
 
             <button 
                 onClick={addExperience} 
-                diseabled={!inputExperience.trim()}
+                diseabled={!inputExperienceTitle.trim()}
                 className='Experience-field'>
 
               Valider
@@ -157,7 +140,7 @@ Link supposed to send the user to the view
       <div className='Experience-container'>
         <ul>
           {
-            experiences.map(task => {
+            Experience.map(task => {
 
               return (
                 <div className='Experience-content'>
