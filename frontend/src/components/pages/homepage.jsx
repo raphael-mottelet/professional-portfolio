@@ -119,8 +119,15 @@ Link supposed to send the user to the view
               value={inputExperienceTitle}
               onChange={e => handleChange(e)}
               />
-
+            
             <input 
+              type="text" 
+              placeholder="Ajoutez une description"
+              value={inputExperienceTitleDescription}
+              onChange={f => DescriptionChange(f)}
+              />
+
+              <input 
               type="text" 
               placeholder="Ajoutez une description"
               value={inputExperienceTitleDescription}
