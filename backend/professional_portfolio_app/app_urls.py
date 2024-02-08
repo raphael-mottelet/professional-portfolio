@@ -9,6 +9,7 @@ from professional_portfolio_app.views import (ListExperienceView, CreateExperien
 urlpatterns = [
 
     # URLs for CRUD operations on Experience model
+    # URLs for CRUD operations on Experience model
     path('list/', ListExperienceView.as_view(), name='list_experience'),
     path('create/', CreateExperienceView.as_view(), name='create_experience'),
     path('<pk>/update/', UpdateExperienceView.as_view(), name='update_experience'),
@@ -35,5 +36,6 @@ urlpatterns = [
     path('<pk>/update/', UpdateSocialLinkView.as_view(), name='update_social_link'),
     path('<pk>/destroy/', DestroySocialLinkView.as_view(), name='destroy_social_link'),
     path('<pk>/details/', SocialLinkDetails.as_view(), name='social_link_details'),
+
 
 ]

@@ -19,6 +19,7 @@ function Homepage() {
   const getAllExperience = () => {
     axios.get(url + 'experience/list/')
       .then(res => {
+        console.log("Response data:", res.data);
         setExperience(res.data)
         console.log(res.data)
       })
@@ -84,14 +85,14 @@ function Homepage() {
     })
   }
 
-  const handleChange =(e) => {
-    setInputExperienceTitle(e.target.value)
-    console.log(inputExperienceTitle)
+  const handleChange = (e) => {
+    setInputExperienceTitle(e.target.value);
+    console.log(inputExperienceTitle);
   }
-
-  const DescriptionChange =(f) => {
-    setInputExperienceTitleDescription(f.target.value)
-    console.log(inputExperienceTitleDescription)
+  
+  const DescriptionChange = (f) => {
+    setInputExperienceTitleDescription(f.target.value);
+    console.log(inputExperienceTitleDescription);
   }
 
   useEffect(() => {
@@ -127,16 +128,10 @@ Link supposed to send the user to the view
               onChange={f => DescriptionChange(f)}
               />
 
-              <input 
-              type="text" 
-              placeholder="Ajoutez une description"
-              value={inputExperienceTitleDescription}
-              onChange={f => DescriptionChange(f)}
-              />
 
             <button 
                 onClick={addExperience} 
-                diseabled={!inputExperienceTitle.trim()}
+                disabled={!inputExperienceTitle.trim()}
                 className='Experience-field'>
 
               Valider
