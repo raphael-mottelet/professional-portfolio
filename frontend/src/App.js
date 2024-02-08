@@ -1,14 +1,14 @@
-import { Route } from 'react-router';
-
-import HomePage from './components/pages/homepage'
-import ExperienceDetails from './components/pages/experience-page';
-<Route path="/experiecnce/:id" component={ExperienceDetails} />
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import CrudHub from './components/pages/crud-hub';
 
 function App() {
   return (
-    <div>
-      <HomePage></HomePage>
-    </div>
+    <Router>
+      <Routes>
+        <Route exact path="/" element={<CrudHub />} />
+      </Routes>
+    </Router>
   );
 }
 

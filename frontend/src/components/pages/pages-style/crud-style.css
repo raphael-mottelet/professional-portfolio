@@ -1,0 +1,118 @@
+/* homepage.css */
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.form-container {
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 20px;
+}
+
+.crud-style-input {
+  display: flex;
+  flex-direction: column;
+}
+
+.crud-style-input input[type="text"],
+.crud-style-input select {
+  margin-bottom: 10px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.crud-style-field {
+  padding: 12px 24px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.crud-style-field:disabled {
+  background-color: #ccc;
+  color: #888;
+  cursor: not-allowed;
+}
+
+.crud-style-container {
+  width: 100%;
+  max-width: 800px;
+}
+
+.crud-style-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+  border: 1px solid #ccc;
+}
+
+.crud-style-content:hover {
+  background-color: #e9e9e9;
+}
+
+.crud-style-title {
+  flex-grow: 1;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.crud-style-status {
+  font-size: 0.9rem;
+  margin-left: 10px;
+  font-style: italic;
+  color: #555;
+}
+
+.crud-style-button-container {
+  display: flex;
+  align-items: center;
+}
+
+.crud-style-button {
+  margin-left: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.crud-style-button:hover {
+  background-color: #0056b3;
+  color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.crud-style-edit {
+  background-color: #ff9100;
+}
+
+.crud-style-delete {
+  background-color: #ff0000;
+}
+
+/* Nouvelles classes pour les statuts */
+.ongoing-mission {
+  color: #095dacc2;
+}
+
+.terminated-mission {
+  color: #00000075;
+}
