@@ -15,7 +15,7 @@ function EducationCrudPage() {
   const [activeEducation, setActiveEducation] = useState(null);
 
   const getAllEducations = () => {
-    axios.get(url + 'get_education/education/list/')
+    axios.get(url + 'get_education/list/')
       .then(res => {
         setEducations(res.data);
       })
@@ -36,7 +36,7 @@ function EducationCrudPage() {
   };
 
   const addEducation = () => {
-    axios.post(url + 'get_education/education/create/', {
+    axios.post(url + 'get_education/create/', {
       'title': inputEducationTitle,
       'description': inputEducationTitleDescription,
       'status': inputEducationStatus

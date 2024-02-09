@@ -15,7 +15,7 @@ function Homepage() {
   const [activeCrudStyle, setActiveCrudStyle] = useState(null);
 
   const getAllCrudStyle = () => {
-    axios.get(url + 'get_experience/experience/list/')
+    axios.get(url + 'get_experience/list/')
       .then(res => {
         setCrudStyle(res.data);
       })
@@ -36,7 +36,7 @@ function Homepage() {
   };
 
   const addCrudStyle = () => {
-    axios.post(url + 'get_experience/experience/create/', {
+    axios.post(url + 'get_experience/create/', {
       'title': inputCrudStyleTitle,
       'description': inputCrudStyleTitleDescription,
       'status': inputCrudStyleStatus
