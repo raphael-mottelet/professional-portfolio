@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import EditPopup from '../popup/edition-popup'; // Import the EditPopup component
 
 import '../pages-style/crud-style.css'; // Import the provided CSS
 
@@ -8,8 +9,9 @@ function Homepage() {
   const [projects, setProjects] = useState([]);
   const [inputProjectTitle, setInputProjectTitle] = useState('');
   const [inputProjectDescription, setInputProjectDescription] = useState('');
-  const [inputProjectStatus, setInputProjectStatus] = useState('ongoing');
+  const [inputProjectGithub, setInputProjectGithub] = useState('');
   const [activeProject, setActiveProject] = useState(null);
+  const [isEditPopupOpen, setIsEditPopupOpen] = useState(false); // State for managing popup visibility
 
   const getAllProjects = () => {
     axios.get(url + 'get_projects/projects/list/')
@@ -25,23 +27,35 @@ function Homepage() {
     axios.post(url + 'get_projects/projects/create/', {
       'name': inputProjectTitle,
       'techs': inputProjectDescription,
-      'github': inputProjectStatus
+      'github': inputProjectGithub
     }).then(res => {
       const newProject = res.data;
       setProjects(prevProjects => [...prevProjects, newProject]);
       setInputProjectTitle('');
       setInputProjectDescription('');
-      setInputProjectStatus('ongoing'); // Reset status after adding
+      setInputProjectGithub('');
     }).catch(err => {
       console.error(err);
     });
   };
 
-  const updateProject = project => {
-    setActiveProject(project);
-    setInputProjectTitle(project.name);
-    setInputProjectDescription(project.techs);
-    setInputProjectStatus(project.github);
+  const updateProject = () => {
+    setIsEditPopupOpen(true); // Open the edit popup
+  };
+
+  const saveEditedProject = (editedProject) => {
+    axios.put(url + `get_projects/projects/${editedProject.id}/update/`, editedProject)
+      .then(res => {
+        setProjects(prevProjects =>
+          prevProjects.map(project =>
+            project.id === editedProject.id ? editedProject : project
+          )
+        );
+        setIsEditPopupOpen(false); // Close the edit popup after saving
+        setActiveProject(null); // Clear active project after updating
+      }).catch(err => {
+        console.error(err);
+      });
   };
 
   const deleteProject = project => {
@@ -62,8 +76,8 @@ function Homepage() {
     setInputProjectDescription(f.target.value);
   };
 
-  const handleStatusChange = e => {
-    setInputProjectStatus(e.target.value);
+  const handleGithubChange = e => {
+    setInputProjectGithub(e.target.value);
   };
 
   useEffect(() => {
@@ -74,26 +88,26 @@ function Homepage() {
     <div className='home-container'>
       <div className='form-container'>
         <div className='crud-style-input'>
-          <input 
-            type="text" 
+          <input
+            type="text"
             placeholder="Ajoutez un titre"
             value={inputProjectTitle}
             onChange={e => handleChange(e)}
           />
-          <input 
-            type="text" 
+          <input
+            type="text"
             placeholder="Ajoutez une description"
             value={inputProjectDescription}
             onChange={f => DescriptionChange(f)}
           />
-          <input 
-            type="text" 
-            placeholder="Ajoutez un techs"
-            value={inputProjectStatus}
-            onChange={handleStatusChange}
+          <input
+            type="url"
+            placeholder="Ajoutez un lien git"
+            value={inputProjectGithub}
+            onChange={handleGithubChange}
           />
-          <button 
-            onClick={addProject} 
+          <button
+            onClick={addProject}
             disabled={!inputProjectTitle.trim()}
             className='crud-style-field'
           >
@@ -110,13 +124,8 @@ function Homepage() {
                   <div className='crud-style-title'>
                     {project.name}
                   </div>
-                  <div className='crud-style-status'>
-                    {project.github === 'ongoing' ? 
-                      <span className='ongoing-mission'>Mission en cours</span> : 
-                      <span className='terminated-mission'>Mission terminée</span>}
-                  </div>
                   <div className='home-button'>
-                    <button onClick={() => updateProject(project)} className='crud-style-button'>Edit</button>
+                    <button onClick={() => { setActiveProject(project); updateProject(); }} className='crud-style-button'>Edit</button>
                     <button className="crud-style-button" onClick={() => deleteProject(project)}>
                       Delete
                     </button>
@@ -127,6 +136,13 @@ function Homepage() {
           }
         </ul>
       </div>
+      {isEditPopupOpen && activeProject && (
+        <EditPopup
+          project={activeProject}
+          onSave={saveEditedProject}
+          onClose={() => setIsEditPopupOpen(false)}
+        />
+      )}
     </div>
   );
 }
