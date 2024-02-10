@@ -1,7 +1,5 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import ExperienceDetail from './experience-details';
-import { Link } from 'react-router-dom'; // Importer Link pour la navigation
 
 import '../pages-style/crud-style.css';
 import '../pages-style/button-styling.css';
@@ -15,7 +13,7 @@ function Homepage() {
   const [activeCrudStyle, setActiveCrudStyle] = useState(null);
 
   const getAllCrudStyle = () => {
-    axios.get(url + 'get_experience/list/')
+    axios.get(url + 'get_experience/experience/list/')
       .then(res => {
         setCrudStyle(res.data);
       })
@@ -36,7 +34,7 @@ function Homepage() {
   };
 
   const addCrudStyle = () => {
-    axios.post(url + 'get_experience/create/', {
+    axios.post(url + 'get_experience/experience/create/', {
       'title': inputCrudStyleTitle,
       'description': inputCrudStyleTitleDescription,
       'status': inputCrudStyleStatus

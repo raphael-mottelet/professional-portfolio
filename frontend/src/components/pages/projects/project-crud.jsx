@@ -1,9 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom'; // Importer Link pour la navigation
 
-import '../pages-style/crud-style.css';
-import '../pages-style/button-styling.css';
+import '../pages-style/crud-style.css'; // Import the provided CSS
 
 function Homepage() {
   const url = 'http://127.0.0.1:8000/';
@@ -14,7 +12,7 @@ function Homepage() {
   const [activeProject, setActiveProject] = useState(null);
 
   const getAllProjects = () => {
-    axios.get(url + 'get_projects/project/list/')
+    axios.get(url + 'get_projects/projects/list/')
       .then(res => {
         setProjects(res.data);
       })
@@ -23,28 +21,17 @@ function Homepage() {
       });
   };
 
-  const projectMarkStatus = project => {
-    axios.put(url + `get_projects/project/${project.id}/update/`, {
-      'title': project.title,
-      'status': project.status === 'ongoing' ? 'terminated' : 'ongoing'
-    }).then(res => {
-      getAllProjects();
-    }).catch(err => {
-      console.error(err);
-    });
-  };
-
   const addProject = () => {
-    axios.post(url + 'get_projects/project/create/', {
-      'title': inputProjectTitle,
-      'description': inputProjectDescription,
-      'status': inputProjectStatus
+    axios.post(url + 'get_projects/projects/create/', {
+      'name': inputProjectTitle,
+      'techs': inputProjectDescription,
+      'github': inputProjectStatus
     }).then(res => {
       const newProject = res.data;
       setProjects(prevProjects => [...prevProjects, newProject]);
       setInputProjectTitle('');
       setInputProjectDescription('');
-      setInputProjectStatus('ongoing'); // Réinitialiser le statut après l'ajout
+      setInputProjectStatus('ongoing'); // Reset status after adding
     }).catch(err => {
       console.error(err);
     });
@@ -52,13 +39,13 @@ function Homepage() {
 
   const updateProject = project => {
     setActiveProject(project);
-    setInputProjectTitle(project.title);
-    setInputProjectDescription(project.description);
-    setInputProjectStatus(project.status);
+    setInputProjectTitle(project.name);
+    setInputProjectDescription(project.techs);
+    setInputProjectStatus(project.github);
   };
 
   const deleteProject = project => {
-    axios.delete(url + `get_projects/project/${project.id}/destroy/`)
+    axios.delete(url + `get_projects/projects/${project.id}/destroy/`)
       .then(res => {
         getAllProjects();
       })
@@ -86,7 +73,7 @@ function Homepage() {
   return (
     <div className='home-container'>
       <div className='form-container'>
-        <div className='project-input'>
+        <div className='crud-style-input'>
           <input 
             type="text" 
             placeholder="Ajoutez un titre"
@@ -99,36 +86,38 @@ function Homepage() {
             value={inputProjectDescription}
             onChange={f => DescriptionChange(f)}
           />
-          <select value={inputProjectStatus} onChange={handleStatusChange}>
-            <option value="ongoing">Ongoing</option>
-            <option value="terminated">Terminated</option>
-          </select>
+          <input 
+            type="text" 
+            placeholder="Ajoutez un techs"
+            value={inputProjectStatus}
+            onChange={handleStatusChange}
+          />
           <button 
             onClick={addProject} 
             disabled={!inputProjectTitle.trim()}
-            className='project-field'
+            className='crud-style-field'
           >
             Valider
           </button>
         </div>
       </div>
-      <div className='project-container'>
+      <div className='crud-style-container'>
         <ul>
           {
             projects.map(project => {
               return (
-                <div className='project-content' key={project.id}>
-                  <div className='project-title'>
-                    {project.title}
+                <div className='crud-style-content' key={project.id}>
+                  <div className='crud-style-title'>
+                    {project.name}
                   </div>
-                  <div className='project-status'>
-                    {project.status === 'ongoing' ? 
+                  <div className='crud-style-status'>
+                    {project.github === 'ongoing' ? 
                       <span className='ongoing-mission'>Mission en cours</span> : 
                       <span className='terminated-mission'>Mission terminée</span>}
                   </div>
                   <div className='home-button'>
-                    <button onClick={e => updateProject(project)} className='project-edit'>Edit</button>
-                    <button className="project-delete" onClick={e => {deleteProject(project)}}>
+                    <button onClick={() => updateProject(project)} className='crud-style-button'>Edit</button>
+                    <button className="crud-style-button" onClick={() => deleteProject(project)}>
                       Delete
                     </button>
                   </div>
