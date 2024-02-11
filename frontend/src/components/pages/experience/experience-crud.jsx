@@ -11,6 +11,7 @@ function Homepage() {
   const [inputCrudStyleTitleDescription, setInputCrudStyleTitleDescription] = useState('');
   const [inputCrudStyleStatus, setInputCrudStyleStatus] = useState('ongoing');
   const [activeCrudStyle, setActiveCrudStyle] = useState(null);
+  const [isEditPopupOpen, setIsEditPopupOpen] = useState(false); // State for managing edit popup visibility
 
   const getAllCrudStyle = () => {
     axios.get(url + 'get_experience/experience/list/')
@@ -43,7 +44,7 @@ function Homepage() {
       setCrudStyle(prevCrudStyle => [...prevCrudStyle, newCrudStyle]);
       setInputCrudStyleTitle('');
       setInputCrudStyleTitleDescription('');
-      setInputCrudStyleStatus('ongoing'); // Réinitialiser le statut après l'ajout
+      setInputCrudStyleStatus('ongoing'); // Reset status after adding
     }).catch(err => {
       console.error(err);
     });
@@ -54,6 +55,21 @@ function Homepage() {
     setInputCrudStyleTitle(task.title);
     setInputCrudStyleTitleDescription(task.description);
     setInputCrudStyleStatus(task.status);
+    setIsEditPopupOpen(true); // Open the edit popup
+  };
+
+  const saveEditedCrudStyle = () => {
+    // Send PUT request to update task
+    axios.put(url + `get_experience/experience/${activeCrudStyle.id}/update/`, {
+      'title': inputCrudStyleTitle,
+      'description': inputCrudStyleTitleDescription,
+      'status': inputCrudStyleStatus
+    }).then(res => {
+      getAllCrudStyle();
+      setIsEditPopupOpen(false); // Close the edit popup after saving
+    }).catch(err => {
+      console.error(err);
+    });
   };
 
   const deleteCrudStyle = task => {
@@ -116,7 +132,7 @@ function Homepage() {
           {
             crudStyle.map(task => {
               return (
-                <div className='crud-style-content'>
+                <div className='crud-style-content' key={task.id}>
                   <div className='crud-style-title'>
                     {task.title}
                   </div>
@@ -126,14 +142,10 @@ function Homepage() {
                       <span className='terminated-mission'>Mission terminée</span>}
                   </div>
                   <div className='home-button'>
-                    <button onClick={e => updateCrudStyle(task)} className='crud-style-button'>Edit</button>
-                    <button className="crud-style-button" onClick={e => {deleteCrudStyle(task)}}>
+                    <button onClick={() => updateCrudStyle(task)} className='crud-style-button'>Edit</button>
+                    <button className="crud-style-button" onClick={() => deleteCrudStyle(task)}>
                       Delete
                     </button>
-                  </div>
-
-                  <div>
-
                   </div>
                 </div>
               );
@@ -141,6 +153,21 @@ function Homepage() {
           }
         </ul>
       </div>
+      {isEditPopupOpen && activeCrudStyle && (
+        <div className="popup-container">
+          <div className="popup-content">
+            <h2>Edit Task</h2>
+            <input type="text" value={inputCrudStyleTitle} onChange={e => setInputCrudStyleTitle(e.target.value)} />
+            <input type="text" value={inputCrudStyleTitleDescription} onChange={f => setInputCrudStyleTitleDescription(f.target.value)} />
+            <select value={inputCrudStyleStatus} onChange={e => setInputCrudStyleStatus(e.target.value)}>
+              <option value="ongoing">Ongoing</option>
+              <option value="terminated">Terminated</option>
+            </select>
+            <button onClick={saveEditedCrudStyle}>Save</button>
+            <button onClick={() => setIsEditPopupOpen(false)}>Cancel</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

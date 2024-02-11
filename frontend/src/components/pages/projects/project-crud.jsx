@@ -39,7 +39,8 @@ function Homepage() {
     });
   };
 
-  const updateProject = () => {
+  const updateProject = (project) => {
+    setActiveProject(project);
     setIsEditPopupOpen(true); // Open the edit popup
   };
 
@@ -125,7 +126,7 @@ function Homepage() {
                     {project.name}
                   </div>
                   <div className='home-button'>
-                    <button onClick={() => { setActiveProject(project); updateProject(); }} className='crud-style-button'>Edit</button>
+                    <button onClick={() => updateProject(project)} className='crud-style-button'>Edit</button>
                     <button className="crud-style-button" onClick={() => deleteProject(project)}>
                       Delete
                     </button>

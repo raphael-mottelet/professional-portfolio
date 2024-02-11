@@ -1,8 +1,10 @@
+// edition-popup.jsx
 import React, { useState } from 'react';
-import '../pages-style/edition-popup.css'
+import '../pages-style/edition-popup.css';
 
 function PopupEdition({ project, onSave, onClose }) {
-  const [editedProject, setEditedProject] = useState(project);
+  // Initialize editedProject with project to prevent undefined values
+  const [editedProject, setEditedProject] = useState(project || { name: '', techs: '', github: '' });
 
   const handleChange = e => {
     const { name, value } = e.target;
@@ -13,6 +15,10 @@ function PopupEdition({ project, onSave, onClose }) {
   };
 
   const handleSave = () => {
+    if (!editedProject.id) {
+      console.error('Project ID is missing.'); // Log an error if ID is missing
+      return;
+    }
     onSave(editedProject);
     onClose();
   };
