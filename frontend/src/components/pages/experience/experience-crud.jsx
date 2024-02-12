@@ -13,7 +13,28 @@ function Homepage() {
   const [activeCrudStyle, setActiveCrudStyle] = useState(null);
   const [isEditPopupOpen, setIsEditPopupOpen] = useState(false); // State for managing edit popup visibility
 
-  const getAllCrudStyle = () => {
+
+
+const getAllCrudStyle = () => {
+  const token = localStorage.getItem('access_token');
+  axios.get(url + 'get_experience/experience/list/', {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  })
+  .then(res => {
+    setCrudStyle(res.data);
+  })
+  .catch(err => {
+    console.error('Error fetching experience data:', err);
+    // Handle error, such as setting a default value for crudStyle or showing an error message
+  });
+};
+
+
+ /* Old constant who took correct url as parameter but didnt took auth tokens
+ 
+ const getAllCrudStyle = () => {
     axios.get(url + 'get_experience/experience/list/')
       .then(res => {
         setCrudStyle(res.data);
@@ -21,7 +42,7 @@ function Homepage() {
       .catch(err => {
         console.error(err);
       });
-  };
+  };*/
 
   const CrudStyleMarkStatus = task => {
     axios.put(url + `get_experience/experience/${task.id}/update/`, {
@@ -35,17 +56,28 @@ function Homepage() {
   };
 
   const addCrudStyle = () => {
-    axios.post(url + 'get_experience/experience/create/', {
-      'title': inputCrudStyleTitle,
-      'description': inputCrudStyleTitleDescription,
-      'status': inputCrudStyleStatus
-    }).then(res => {
+    const token = localStorage.getItem('access_token');
+    axios.post(
+      url + 'get_experience/experience/create/',
+      {
+        title: inputCrudStyleTitle,
+        description: inputCrudStyleTitleDescription,
+        status: inputCrudStyleStatus
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }
+    )
+    .then(res => {
       const newCrudStyle = res.data;
       setCrudStyle(prevCrudStyle => [...prevCrudStyle, newCrudStyle]);
       setInputCrudStyleTitle('');
       setInputCrudStyleTitleDescription('');
       setInputCrudStyleStatus('ongoing'); // Reset status after adding
-    }).catch(err => {
+    })
+    .catch(err => {
       console.error(err);
     });
   };
@@ -130,7 +162,7 @@ function Homepage() {
       <div className='crud-style-container'>
         <ul>
           {
-            crudStyle.map(task => {
+            Array.isArray(crudStyle) && crudStyle.map(task => {
               return (
                 <div className='crud-style-content' key={task.id}>
                   <div className='crud-style-title'>
