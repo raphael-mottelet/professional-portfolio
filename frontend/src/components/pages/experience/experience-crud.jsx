@@ -154,17 +154,17 @@ function Homepage() {
         </ul>
       </div>
       {isEditPopupOpen && activeCrudStyle && (
-        <div className="popup-container">
-          <div className="popup-content">
-            <h2>Edit Task</h2>
-            <input type="text" value={inputCrudStyleTitle} onChange={e => setInputCrudStyleTitle(e.target.value)} />
-            <input type="text" value={inputCrudStyleTitleDescription} onChange={f => setInputCrudStyleTitleDescription(f.target.value)} />
-            <select value={inputCrudStyleStatus} onChange={e => setInputCrudStyleStatus(e.target.value)}>
-              <option value="ongoing">Ongoing</option>
-              <option value="terminated">Terminated</option>
+        <div className='popup-container'>
+          <div className='popup-content experience-popup'>
+            <h2 className='popup-title'>Edit Task</h2>
+            <input className='crud-popup-input' type='text' value={inputCrudStyleTitle} onChange={e => setInputCrudStyleTitle(e.target.value)} />
+            <input className='crud-popup-input' type='text' value={inputCrudStyleTitleDescription} onChange={f => setInputCrudStyleTitleDescription(f.target.value)} />
+            <select className='crud-popup-input' value={inputCrudStyleStatus} onChange={e => setInputCrudStyleStatus(e.target.value)}>
+              <option value='ongoing'>Ongoing</option>
+              <option value='terminated'>Terminated</option>
             </select>
-            <button onClick={saveEditedCrudStyle}>Save</button>
-            <button onClick={() => setIsEditPopupOpen(false)}>Cancel</button>
+            <button className='popup-button' onClick={saveEditedCrudStyle}>Save</button>
+            <button className='popup-button' onClick={() => setIsEditPopupOpen(false)}>Cancel</button>
           </div>
         </div>
       )}

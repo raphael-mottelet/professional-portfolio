@@ -1,41 +1,81 @@
 .popup-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000; /* Ensure the popup appears above other content */
-    animation: fadeIn 0.3s ease-out; /* Fade in animation */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure the popup is on top of other elements */
+  animation: fadeIn 0.3s ease-in-out; /* Fade-in animation */
+}
+
+.popup-content {
+  background-color: #f8f9fa; /* Light gray background */
+  padding: 40px; /* Increased padding */
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Shadow effect */
+  max-width: 600px; /* Maximum width of the popup */
+  width: 90%;
+  animation: scaleIn 0.3s ease-in-out; /* Scale-in animation */
+}
+
+.edtion-popup-title {
+  margin-bottom: 30px; /* Increased margin-bottom */
+  font-size: 24px; /* Larger font size */
+  color: #333; /* Dark gray text color */
+}
+
+.crud-popup-input {
+  width: 100%;
+  padding: 15px; /* Increased padding */
+  margin-bottom: 20px; /* Increased margin-bottom */
+  border: 1px solid #ccc;
+  border-radius: 8px; /* Slightly rounded corners */
+  box-sizing: border-box;
+  background-color: #eeeeee;
+  font-size: 16px; /* Increased font size */
+  transition: border-color 0.3s ease;
+}
+
+/* Hover animation for input fields */
+.crud-popup-input:hover {
+  border-color: #007bff; /* Change border color on hover */
+}
+
+
+.popup-button {
+  padding: 10px 20px; /* Reduced padding */
+  background-color: #007bff; /* Blue color */
+  color: #fff; /* White text color */
+  border: none;
+  border-radius: 8px; /* Slightly rounded corners */
+  cursor: pointer;
+  margin: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.popup-button:hover {
+  background-color: #0056b3; /* Darker blue color on hover */
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-  
-  .popup-content {
-    background-color: #fff;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Shadow effect */
+  to {
+    opacity: 1;
   }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.8);
   }
-  
-  .popup-close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
+  to {
+    transform: scale(1);
   }
-  
-  .popup-close:hover {
-    color: #ff0000; /* Change color on hover */
-  }
-  
+}

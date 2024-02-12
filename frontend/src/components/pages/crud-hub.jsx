@@ -15,14 +15,14 @@ function CrudHub() {
   };
 
   return (
-    <div className="crud-hub">
-      <h1 classname="crud-manager-title">CRUD MANAGER</h1>
+    <div className="crud-hub-container">
+      <h1 classname="crud-manager-title">crud manager</h1>
       <select value={selectedCrud} onChange={handleSelectChange}>
-        <option value="">Sélectionner un CRUD</option>
-        <option value="education">Education</option>
-        <option value="experience">Experience</option>
-        <option value="sociallinks">Social Links</option>
-        <option value="project">Project</option>
+        <option classname="crud-hub-value" value="">Sélectionner un CRUD</option>
+        <option classname="crud-hub-value" value="education">Education</option>
+        <option classname="crud-hub-value" value="experience">Experience</option>
+        <option classname="crud-hub-value" value="sociallinks">Social Links</option>
+        <option classname="crud-hub-value" value="project">Project</option>
       </select>
       <div className="crud-display">
         {selectedCrud === 'education' && <EducationPage className="crud-content" />}

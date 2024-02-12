@@ -18,6 +18,9 @@ class EducationSerializer(serializers.ModelSerializer):
         fields = ('id', 'date', 'imageSrc', 'title', 'level', 'location', 'description')
         extra_kwargs = {
             'imageSrc': {'required': False},
+            'date': {'required': False},
+            'level': {'required': False},
+            'location': {'required': False},
         }
 
 class ProjectSerializer(serializers.ModelSerializer):
@@ -26,10 +29,15 @@ class ProjectSerializer(serializers.ModelSerializer):
         fields = ('id', 'name', 'imageSrc', 'techs', 'github')
         extra_kwargs = {
             'imageSrc': {'required': False},
+            'github': {'required': False},
         }
 
 class SocialLinkSerializer(serializers.ModelSerializer):
     class Meta:
         model = SocialLink
         fields = ('id', 'iconSrc', 'name', 'link')
+        extra_kwargs = {
+            'iconSrc': {'required': False},
+
+        }
 

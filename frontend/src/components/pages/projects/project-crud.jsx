@@ -1,68 +1,69 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import EditPopup from '../popup/edition-popup'; // Import the EditPopup component
 
-import '../pages-style/crud-style.css'; // Import the provided CSS
+import '../pages-style/crud-style.css';
+import '../pages-style/button-styling.css';
 
-function Homepage() {
+function ProjectCrud() {
   const url = 'http://127.0.0.1:8000/';
-  const [projects, setProjects] = useState([]);
-  const [inputProjectTitle, setInputProjectTitle] = useState('');
-  const [inputProjectDescription, setInputProjectDescription] = useState('');
-  const [inputProjectGithub, setInputProjectGithub] = useState('');
-  const [activeProject, setActiveProject] = useState(null);
-  const [isEditPopupOpen, setIsEditPopupOpen] = useState(false); // State for managing popup visibility
+  const [crudStyle, setCrudStyle] = useState([]);
+  const [inputCrudStyleTitle, setInputCrudStyleTitle] = useState('');
+  const [inputCrudStyleTechs, setInputCrudStyleTechs] = useState('');
+  const [inputCrudStyleGithub, setInputCrudStyleGithub] = useState('');
+  const [activeCrudStyle, setActiveCrudStyle] = useState(null);
+  const [isEditPopupOpen, setIsEditPopupOpen] = useState(false);
 
-  const getAllProjects = () => {
+  const getAllCrudStyle = () => {
     axios.get(url + 'get_projects/projects/list/')
       .then(res => {
-        setProjects(res.data);
+        setCrudStyle(res.data);
       })
       .catch(err => {
         console.error(err);
       });
   };
 
-  const addProject = () => {
+  const addCrudStyle = () => {
     axios.post(url + 'get_projects/projects/create/', {
-      'name': inputProjectTitle,
-      'techs': inputProjectDescription,
-      'github': inputProjectGithub
+      'name': inputCrudStyleTitle,
+      'techs': inputCrudStyleTechs,
+      'github': inputCrudStyleGithub
     }).then(res => {
-      const newProject = res.data;
-      setProjects(prevProjects => [...prevProjects, newProject]);
-      setInputProjectTitle('');
-      setInputProjectDescription('');
-      setInputProjectGithub('');
+      const newCrudStyle = res.data;
+      setCrudStyle(prevCrudStyle => [...prevCrudStyle, newCrudStyle]);
+      setInputCrudStyleTitle('');
+      setInputCrudStyleTechs('');
+      setInputCrudStyleGithub('');
     }).catch(err => {
       console.error(err);
     });
   };
 
-  const updateProject = (project) => {
-    setActiveProject(project);
-    setIsEditPopupOpen(true); // Open the edit popup
+  const updateCrudStyle = task => {
+    setActiveCrudStyle(task);
+    setInputCrudStyleTitle(task.name);
+    setInputCrudStyleTechs(task.techs);
+    setInputCrudStyleGithub(task.github);
+    setIsEditPopupOpen(true);
   };
 
-  const saveEditedProject = (editedProject) => {
-    axios.put(url + `get_projects/projects/${editedProject.id}/update/`, editedProject)
-      .then(res => {
-        setProjects(prevProjects =>
-          prevProjects.map(project =>
-            project.id === editedProject.id ? editedProject : project
-          )
-        );
-        setIsEditPopupOpen(false); // Close the edit popup after saving
-        setActiveProject(null); // Clear active project after updating
-      }).catch(err => {
-        console.error(err);
-      });
+  const saveEditedCrudStyle = () => {
+    axios.put(url + `get_projects/projects/${activeCrudStyle.id}/update/`, {
+      'name': inputCrudStyleTitle,
+      'techs': inputCrudStyleTechs,
+      'github': inputCrudStyleGithub
+    }).then(res => {
+      getAllCrudStyle();
+      setIsEditPopupOpen(false);
+    }).catch(err => {
+      console.error(err);
+    });
   };
 
-  const deleteProject = project => {
-    axios.delete(url + `get_projects/projects/${project.id}/destroy/`)
+  const deleteCrudStyle = task => {
+    axios.delete(url + `get_projects/projects/${task.id}/destroy/`)
       .then(res => {
-        getAllProjects();
+        getAllCrudStyle();
       })
       .catch(err => {
         console.error(err);
@@ -70,64 +71,72 @@ function Homepage() {
   };
 
   const handleChange = e => {
-    setInputProjectTitle(e.target.value);
+    setInputCrudStyleTitle(e.target.value);
   };
 
-  const DescriptionChange = f => {
-    setInputProjectDescription(f.target.value);
+  const handleTechsChange = e => {
+    setInputCrudStyleTechs(e.target.value);
   };
 
   const handleGithubChange = e => {
-    setInputProjectGithub(e.target.value);
+    setInputCrudStyleGithub(e.target.value);
   };
 
   useEffect(() => {
-    getAllProjects();
+    getAllCrudStyle();
   }, []);
 
   return (
     <div className='home-container'>
       <div className='form-container'>
         <div className='crud-style-input'>
-          <input
-            type="text"
-            placeholder="Ajoutez un titre"
-            value={inputProjectTitle}
+          <input 
+            type="text" 
+            placeholder="Add a title"
+            value={inputCrudStyleTitle}
             onChange={e => handleChange(e)}
           />
-          <input
-            type="text"
-            placeholder="Ajoutez une description"
-            value={inputProjectDescription}
-            onChange={f => DescriptionChange(f)}
+          <input 
+            type="text" 
+            placeholder="Add technologies"
+            value={inputCrudStyleTechs}
+            onChange={e => handleTechsChange(e)}
           />
-          <input
-            type="url"
-            placeholder="Ajoutez un lien git"
-            value={inputProjectGithub}
-            onChange={handleGithubChange}
+          <input 
+            type="url" 
+            placeholder="Add Github URL"
+            value={inputCrudStyleGithub}
+            onChange={e => handleGithubChange(e)}
           />
-          <button
-            onClick={addProject}
-            disabled={!inputProjectTitle.trim()}
-            className='crud-style-field'
+          <button 
+            onClick={addCrudStyle} 
+            disabled={!inputCrudStyleTitle.trim()}
+            className='crud-style-button'
           >
-            Valider
+            Add Project
           </button>
         </div>
       </div>
       <div className='crud-style-container'>
         <ul>
           {
-            projects.map(project => {
+            crudStyle.map(task => {
               return (
-                <div className='crud-style-content' key={project.id}>
+                <div className='crud-style-content' key={task.id}>
                   <div className='crud-style-title'>
-                    {project.name}
+                    {task.name}
+                  </div>
+                  <div className='crud-style-techs'>
+                    {task.techs}
+                  </div>
+                  <div className='crud-style-github'>
+                    <a href={task.github} target="_blank" rel="noopener noreferrer">
+                      Github
+                    </a>
                   </div>
                   <div className='home-button'>
-                    <button onClick={() => updateProject(project)} className='crud-style-button'>Edit</button>
-                    <button className="crud-style-button" onClick={() => deleteProject(project)}>
+                    <button onClick={() => updateCrudStyle(task)} className='crud-style-button'>Edit</button>
+                    <button className="crud-style-button" onClick={() => deleteCrudStyle(task)}>
                       Delete
                     </button>
                   </div>
@@ -137,15 +146,20 @@ function Homepage() {
           }
         </ul>
       </div>
-      {isEditPopupOpen && activeProject && (
-        <EditPopup
-          project={activeProject}
-          onSave={saveEditedProject}
-          onClose={() => setIsEditPopupOpen(false)}
-        />
+      {isEditPopupOpen && activeCrudStyle && (
+        <div className='popup-container'>
+          <div className='popup-content projects-popup'>
+            <h2 className='popup-title'>Edit Project</h2>
+            <input className='crud-popup-input' type='text' value={inputCrudStyleTitle} onChange={e => setInputCrudStyleTitle(e.target.value)} />
+            <input className='crud-popup-input' type='text' value={inputCrudStyleTechs} onChange={e => setInputCrudStyleTechs(e.target.value)} />
+            <input className='crud-popup-input' type='url' value={inputCrudStyleGithub} onChange={e => setInputCrudStyleGithub(e.target.value)} />
+            <button className='popup-button' onClick={saveEditedCrudStyle}>Save</button>
+            <button className='popup-button' onClick={() => setIsEditPopupOpen(false)}>Cancel</button>
+          </div>
+        </div>
       )}
     </div>
   );
 }
 
-export default Homepage;
+export default ProjectCrud;

@@ -1,77 +1,85 @@
-/* crud-hub-style.css */
+/* CRUD Hub Container */
+.crud-hub-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
 
-.crud-hub {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  .crud-manager-title {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    color: #333;
-  }
-  
-  .crud-hub select {
-    font-size: 1rem;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    width: 100%;
-    margin-bottom: 20px;
-    background-color: #fff;
-    color: #333;
-    transition: border-color 0.3s ease;
-  }
-  
-  .crud-hub select:focus {
-    outline: none;
-    border-color: #007bff;
-  }
-  
-  .crud-hub select:hover {
-    border-color: #007bff;
-  }
-  
-  .crud-display {
-    margin-top: 20px;
-  }
-  
-  /* Styles pour les pages CRUD */
-  .crud-content {
-    display: none;
-  }
-  
-  .crud-content.show {
-    display: block;
-  }
-  
-  /* Boutons */
-  .crud-hub-button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s ease;
-  }
-  
-  .crud-hub-button:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Pour éviter de créer des conflits avec d'autres boutons, ajoutez une classe spécifique */
-  .crud-hub .crud-button {
-    margin-right: 10px; /* Espacement entre les boutons */
-  }
-  
-  /* crud-hub-style.css */
-
+/* CRUD Manager Title */
 .crud-manager-title {
-    font-size: 2rem; /* Augmenter la taille du titre */
-    color: #333; /* Changer la couleur du texte */
-    margin-bottom: 20px; /* Ajouter de l'espacement en bas */
-  }
-  
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center;
+}
+
+/* Select Dropdown */
+.crud-hub-container select {
+  font-size: 1rem;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  width: 100%;
+  margin-bottom: 20px;
+  background-color: #fff;
+  color: #333;
+  transition: border-color 0.3s ease;
+}
+
+.crud-hub-container select:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.crud-hub-container select:hover {
+  border-color: #007bff;
+}
+
+/* Dropdown Options */
+.crud-hub-value {
+  font-size: 1rem;
+  padding: 10px;
+  background-color: #fff;
+  color: #333;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.crud-hub-value:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+/* Content Display */
+.crud-display {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Content Component */
+.crud-content {
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
+  background-color: #f4f4f4;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+/* Additional Styling for Specific Pages */
+.education-page {
+  background-color: #fff;
+}
+
+.experience-page {
+  background-color: #fff;
+}
+
+.social-links-page {
+  background-color: #fff;
+}
+
+.project-page {
+  background-color: #fff;
+}
