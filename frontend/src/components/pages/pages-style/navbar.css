@@ -1,0 +1,36 @@
+.navbar {
+    width: 100%; /* Take full width */
+    padding: 0.5rem; /* Add padding for spacing */
+    background-color: #333; /* Navbar background color */
+  }
+  
+  .navbar-container {
+    max-width: 800px; /* Limit navbar width */
+    display: flex;
+    justify-content: space-between; /* Space out logo and menu */
+    align-items: center;
+  }
+  
+  .navbar-logo {
+    font-size: 1.5rem; /* Adjust logo size */
+    color: #fff; /* Logo text color */
+    text-decoration: none;
+  }
+  
+  .navbar-menu {
+    list-style: none;
+    display: flex;
+    gap: 1rem; /* Add gap between menu items */
+  }
+  
+  .navbar-menu li a {
+    color: #fff; /* Menu item text color */
+    text-decoration: none;
+    padding: 0.5rem 1rem; /* Add padding for spacing */
+    border-radius: 5px; /* Rounded corners for menu items */
+    transition: background-color 0.3s ease; /* Smooth background transition */
+  }
+  
+  .navbar-menu li a:hover {
+    background-color: #555; /* Darken background on hover */
+  }
