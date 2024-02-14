@@ -1,14 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import '../pages-style/card.css'
+import '../pages-style/social-card.css'
 
-const SocialLink = ({ data }) => (
-  <motion.div className="card" whileHover={{ scale: 1.05 }}>
-    <a href={data.link} className="card-content">
+const SocialLink = ({ data, isInline }) => (
+  <div className={`social-card ${isInline ? 'inline' : ''}`} whileHover={{ scale: 1.05 }}>
+    <a href={data.link} className="social-card-content">
       {data.iconSrc}
-      <p className="card-name">{data.name}</p>
+      <p className="social-card-name">{data.name}</p>
     </a>
-  </motion.div>
+  </div>
 );
 
 export default SocialLink;
