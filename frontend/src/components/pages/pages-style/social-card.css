@@ -1,79 +1,35 @@
-.-social-card {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-    cursor: pointer;
-    overflow: hidden;
-  }
-  
-  .-social-card:hover {
-    transform: scale(1.05);
-  }
-  
-  .social-card-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    color: #333;
-    padding: 20px;
-  }
-  
-  .social-card-content img {
-    width: 50px;
-    height: 50px;
-    margin-bottom: 10px;
-  }
-  
-  .social-card-name {
-    font-size: 16px;
-    margin-top: 5px;
-  }
-  .social-card-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  
-  .social-card {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-    cursor: pointer;
-    overflow: hidden;
-    margin: 10px;
-  }
-  
-  .social-card:hover {
-    transform: scale(1.05);
-  }
-  
-  .social-card-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    color: #333;
-    padding: 20px;
-  }
-  
-  .social-card-content img {
-    width: 50px;
-    height: 50px;
-    margin-bottom: 10px;
-  }
-  
-  .social-card-name {
-    font-size: 16px;
-    margin-top: 5px;
-  }
-  
-  .social-card.inline {
-    display: inline-block;
-    margin: 0 10px; /* Adjust margin as needed */
-  }
-  
+/* social-card.css */
+
+.social-card {
+  margin: 10px;
+  display: flex; /* Utilisation de Flexbox */
+  justify-content: center; /* Centrer horizontalement les cartes */
+}
+
+.social-card.inline {
+  display: inline-block;
+}
+
+.social-card-content {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #333;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.social-card-content:hover {
+  background-color: #f0f0f0;
+}
+
+.social-card-content img {
+  width: 30px; /* Ajustez la taille de l'icône selon vos besoins */
+  height: 30px; /* Ajustez la taille de l'icône selon vos besoins */
+  margin-right: 10px;
+}
+
+.social-card-name {
+  margin: 0;
+}

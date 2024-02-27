@@ -7,6 +7,7 @@ import ExperienceCard from './Cards/ExperienceCard';
 import EducationCard from './Cards/EducationCard';
 import ProjectCard from './Cards/ProjectCard';
 import SocialCard from './Cards/SocialLinksCard';
+import Footer from './footer/footer'
 
 function Homepage() {
   const [experiences, setExperiences] = useState([]);
@@ -80,6 +81,7 @@ function Homepage() {
           </section>
         </div>
 
+        
         <div className='homepage-title'>
           <h1>Social</h1>
         </div>
@@ -90,7 +92,11 @@ function Homepage() {
             ))}
           </section>
         </div>
+        <div>
+          <Footer/>
+        </div>
       </div>
+      
   );
 }
 
