@@ -16,6 +16,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route exact path="/crudhub" element={<CrudHub />} />
 
+        <Route exact path="/admin" element={<Education />} />
+
         <Route exact path="/education" element={<Education />} />
         <Route exact path="/experience" element={<Experience />} />
         <Route exact path="/projects" element={<Project />} />

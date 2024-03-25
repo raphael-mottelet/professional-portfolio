@@ -4,8 +4,9 @@ import '../pages-style/card.css'
 
 const EducationCard = ({ data }) => (
   <div className="card" whileHover={{ scale: 1.05 }}>
-    <p className="card-title">{data.name}</p>
-    <p className="card-description">{data.techs}</p>
+    <p className="card-title">{data.title}</p>
+    <p className="card-description">{data.level}</p>
+    <p className="card-description">{data.location}</p>
   </div>
 );
 

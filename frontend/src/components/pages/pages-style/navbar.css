@@ -1,36 +1,77 @@
 .navbar {
-    width: 100%; /* Take full width */
-    padding: 0.5rem; /* Add padding for spacing */
-    background-color: #333; /* Navbar background color */
-  }
-  
-  .navbar-container {
-    max-width: 800px; /* Limit navbar width */
-    display: flex;
-    justify-content: space-between; /* Space out logo and menu */
-    align-items: center;
-  }
-  
-  .navbar-logo {
-    font-size: 1.5rem; /* Adjust logo size */
-    color: #fff; /* Logo text color */
-    text-decoration: none;
-  }
-  
-  .navbar-menu {
-    list-style: none;
-    display: flex;
-    gap: 1rem; /* Add gap between menu items */
-  }
-  
-  .navbar-menu li a {
-    color: #fff; /* Menu item text color */
-    text-decoration: none;
-    padding: 0.5rem 1rem; /* Add padding for spacing */
-    border-radius: 5px; /* Rounded corners for menu items */
-    transition: background-color 0.3s ease; /* Smooth background transition */
-  }
-  
-  .navbar-menu li a:hover {
-    background-color: #555; /* Darken background on hover */
-  }
+  width: 100%; /* Remplir toute la largeur */
+  padding: 1rem 0; /* Ajouter du padding pour l'espacement */
+  background-color: #333; /* Couleur de fond de la barre de navigation */
+  position: fixed; /* Fixer la barre de navigation */
+  top: 0; /* Position en haut */
+  left: 0; /* Position à gauche */
+  z-index: 1000; /* S'assurer qu'elle est au-dessus des autres contenus */
+}
+
+.navbar-container {
+  max-width: 800px; /* Limiter la largeur de la barre de navigation */
+  display: flex;
+  justify-content: space-between; /* Espacer le logo et le menu */
+  align-items: center;
+}
+
+.navbar-header {
+  display: flex;
+  align-items: center;
+}
+
+.sidebar-toggle {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.navbar-menu {
+  list-style: none;
+  display: none; /* Masquer le menu par défaut */
+  gap: 1rem; /* Ajouter un espacement entre les éléments du menu */
+}
+
+.navbar-menu.visible {
+  display: flex; /* Afficher le menu lorsqu'il est visible */
+}
+
+.navbar-menu li a {
+  color: #fff; /* Couleur du texte de l'élément du menu */
+  text-decoration: none;
+  padding: 0.5rem 1rem; /* Ajouter du padding pour l'espacement */
+  border-radius: 5px; /* Coins arrondis pour les éléments du menu */
+  transition: background-color 0.3s ease; /* Transition de fond en douceur */
+}
+
+.navbar-menu li a:hover {
+  background-color: #555; /* Assombrir le fond au survol */
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  height: 100%;
+  width: 250px;
+  background-color: #222;
+  padding-top: 50px;
+  transition: left 0.3s ease;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar li {
+  padding: 10px 20px;
+  color: #fff;
+}
+
+.sidebar-open {
+  left: 0;
+}

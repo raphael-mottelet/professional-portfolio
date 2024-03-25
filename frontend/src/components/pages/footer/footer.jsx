@@ -37,13 +37,6 @@ const Footer = () => {
                     <li><a href="/social">Social</a></li>
                     <div className='homepage-title'>
                     </div>
-                    <div className="footer-social-elements">
-                        <section className='social-cards'>
-                            {social.map((social, index) => (
-                                <SocialCard key={social.id} data={social} isInline={index < 5} />
-                            ))}
-                        </section>
-                    </div>
                 </ul>
             </div>
         </nav>
