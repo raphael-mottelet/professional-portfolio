@@ -1,77 +1,27 @@
+
 .navbar {
-  width: 100%; /* Remplir toute la largeur */
-  padding: 1rem 0; /* Ajouter du padding pour l'espacement */
-  background-color: #333; /* Couleur de fond de la barre de navigation */
-  position: fixed; /* Fixer la barre de navigation */
-  top: 0; /* Position en haut */
-  left: 0; /* Position à gauche */
-  z-index: 1000; /* S'assurer qu'elle est au-dessus des autres contenus */
-}
-
-.navbar-container {
-  max-width: 800px; /* Limiter la largeur de la barre de navigation */
-  display: flex;
-  justify-content: space-between; /* Espacer le logo et le menu */
-  align-items: center;
-}
-
-.navbar-header {
-  display: flex;
-  align-items: center;
-}
-
-.sidebar-toggle {
-  background: none;
-  border: none;
-  color: #fff;
-  font-size: 20px;
-  cursor: pointer;
-}
-
-.navbar-menu {
-  list-style: none;
-  display: none; /* Masquer le menu par défaut */
-  gap: 1rem; /* Ajouter un espacement entre les éléments du menu */
-}
-
-.navbar-menu.visible {
-  display: flex; /* Afficher le menu lorsqu'il est visible */
-}
-
-.navbar-menu li a {
-  color: #fff; /* Couleur du texte de l'élément du menu */
-  text-decoration: none;
-  padding: 0.5rem 1rem; /* Ajouter du padding pour l'espacement */
-  border-radius: 5px; /* Coins arrondis pour les éléments du menu */
-  transition: background-color 0.3s ease; /* Transition de fond en douceur */
-}
-
-.navbar-menu li a:hover {
-  background-color: #555; /* Assombrir le fond au survol */
-}
-
-.sidebar {
   position: fixed;
+  height: 8%;
   top: 0;
-  left: -250px;
-  height: 100%;
-  width: 250px;
-  background-color: #222;
-  padding-top: 50px;
-  transition: left 0.3s ease;
-}
-
-.sidebar ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-.sidebar li {
+  left: 221px;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 10px 20px;
-  color: #fff;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid #b8b8b8;
+  z-index: 1000;
 }
 
-.sidebar-open {
-  left: 0;
+.logo a, .home a {
+  text-decoration: none;
+  color: black;
+}
+
+.search input {
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
 }

@@ -1,0 +1,4 @@
+{
+    "remote.SSH.remoteServerListenOnSocket": false,
+    "github.gitProtocol": "https"
+}

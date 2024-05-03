@@ -2,20 +2,22 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-left: 221px;
+  margin-top: 8%;
 }
 
 .card-container {
-  margin-top: 20px; /* Adjust margin as needed */
+  margin-top: 20px;
 }
 
-.experience-cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-/* Style for the cards */
 .homepage-title {
   text-align: center;
-  margin-top: 40px; /* Adjust margin as needed */
+  margin-top: 0px; 
 }
+
+
+#homepage { background-color: #ff9ae18e; }
+#experience { background-color: #e0e0e0; }
+#education { background-color: #d0d0d0; }
+#projects { background-color: #c0c0c0; }
+#social { background-color: #b0b0b0; }

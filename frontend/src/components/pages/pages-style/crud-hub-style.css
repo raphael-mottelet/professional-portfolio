@@ -1,11 +1,10 @@
-/* CRUD Hub Container */
 .crud-hub-container {
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
 }
 
-/* CRUD Manager Title */
+
 .crud-manager-title {
   font-size: 2rem;
   margin-bottom: 20px;
@@ -13,7 +12,6 @@
   text-align: center;
 }
 
-/* Select Dropdown */
 .crud-hub-container select {
   font-size: 1rem;
   padding: 10px;
@@ -35,7 +33,6 @@
   border-color: #007bff;
 }
 
-/* Dropdown Options */
 .crud-hub-value {
   font-size: 1rem;
   padding: 10px;
@@ -49,14 +46,12 @@
   color: #fff;
 }
 
-/* Content Display */
 .crud-display {
   margin-top: 20px;
   display: flex;
   justify-content: center;
 }
 
-/* Content Component */
 .crud-content {
   width: 100%;
   max-width: 600px;
@@ -67,7 +62,6 @@
   margin-bottom: 20px;
 }
 
-/* Additional Styling for Specific Pages */
 .education-page {
   background-color: #fff;
 }
