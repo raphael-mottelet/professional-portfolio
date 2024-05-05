@@ -3,16 +3,19 @@ import React, { useEffect, useState } from 'react';
 
 import '../pages-style/crud-style.css';
 import '../pages-style/button-styling.css';
-import '../pages-style/edition-popup.css'
+import '../pages-style/edition-popup.css';
 
 function EducationCrud() {
   const url = 'http://127.0.0.1:8000/';
   const [crudStyle, setCrudStyle] = useState([]);
   const [inputCrudStyleTitle, setInputCrudStyleTitle] = useState('');
   const [inputCrudStyleTitleDescription, setInputCrudStyleTitleDescription] = useState('');
+  const [inputCrudStyleDate, setInputCrudStyleDate] = useState('');
+  const [inputCrudStyleLevel, setInputCrudStyleLevel] = useState('');
+  const [inputCrudStyleLocation, setInputCrudStyleLocation] = useState('');
   const [inputCrudStyleStatus, setInputCrudStyleStatus] = useState('ongoing');
   const [activeCrudStyle, setActiveCrudStyle] = useState(null);
-  const [isEditPopupOpen, setIsEditPopupOpen] = useState(false); 
+  const [isEditPopupOpen, setIsEditPopupOpen] = useState(false);
 
   const getAllCrudStyle = () => {
     axios.get(url + 'get_education/education/list/')
@@ -39,12 +42,18 @@ function EducationCrud() {
     axios.post(url + 'get_education/education/create/', {
       'title': inputCrudStyleTitle,
       'description': inputCrudStyleTitleDescription,
+      'date': inputCrudStyleDate,
+      'level': inputCrudStyleLevel,
+      'location': inputCrudStyleLocation,
       'status': inputCrudStyleStatus
     }).then(res => {
       const newCrudStyle = res.data;
       setCrudStyle(prevCrudStyle => [...prevCrudStyle, newCrudStyle]);
       setInputCrudStyleTitle('');
       setInputCrudStyleTitleDescription('');
+      setInputCrudStyleDate('');
+      setInputCrudStyleLevel('');
+      setInputCrudStyleLocation('');
       setInputCrudStyleStatus('ongoing'); 
     }).catch(err => {
       console.error(err);
@@ -55,6 +64,9 @@ function EducationCrud() {
     setActiveCrudStyle(task);
     setInputCrudStyleTitle(task.title);
     setInputCrudStyleTitleDescription(task.description);
+    setInputCrudStyleDate(task.date);
+    setInputCrudStyleLevel(task.level);
+    setInputCrudStyleLocation(task.location);
     setInputCrudStyleStatus(task.status);
     setIsEditPopupOpen(true); 
   };
@@ -63,6 +75,9 @@ function EducationCrud() {
     axios.put(url + `get_education/education/${activeCrudStyle.id}/update/`, {
       'title': inputCrudStyleTitle,
       'description': inputCrudStyleTitleDescription,
+      'date': inputCrudStyleDate,
+      'level': inputCrudStyleLevel,
+      'location': inputCrudStyleLocation,
       'status': inputCrudStyleStatus
     }).then(res => {
       getAllCrudStyle();
@@ -90,6 +105,18 @@ function EducationCrud() {
     setInputCrudStyleTitleDescription(f.target.value);
   };
 
+  const handleDateChange = e => {
+    setInputCrudStyleDate(e.target.value);
+  };
+
+  const handleLevelChange = e => {
+    setInputCrudStyleLevel(e.target.value);
+  };
+
+  const handleLocationChange = e => {
+    setInputCrudStyleLocation(e.target.value);
+  };
+
   const handleStatusChange = e => {
     setInputCrudStyleStatus(e.target.value);
   };
@@ -114,6 +141,25 @@ function EducationCrud() {
             value={inputCrudStyleTitleDescription}
             onChange={f => DescriptionChange(f)}
           />
+          <input 
+            type="date" 
+            placeholder="Date"
+            value={inputCrudStyleDate}
+            onChange={e => handleDateChange(e)}
+          />
+          <input 
+            type="text" 
+            placeholder="Level"
+            value={inputCrudStyleLevel}
+            onChange={e => handleLevelChange(e)}
+          />
+          <input 
+            type="text" 
+            placeholder="Location"
+            value={inputCrudStyleLocation}
+            onChange={e => handleLocationChange(e)}
+          />
+          
           <select value={inputCrudStyleStatus} onChange={handleStatusChange}>
             <option value="ongoing">Ongoing</option>
             <option value="terminated">Terminated</option>
@@ -159,6 +205,9 @@ function EducationCrud() {
             <h2 className='popup-title'>Edit Task</h2>
             <input className='crud-popup-input' type='text' value={inputCrudStyleTitle} onChange={e => setInputCrudStyleTitle(e.target.value)} />
             <input className='crud-popup-input' type='text' value={inputCrudStyleTitleDescription} onChange={f => setInputCrudStyleTitleDescription(f.target.value)} />
+            <input className='crud-popup-input' type='date' value={inputCrudStyleDate} onChange={e => setInputCrudStyleDate(e.target.value)} />
+            <input className='crud-popup-input' type='text' value={inputCrudStyleLevel} onChange={e => setInputCrudStyleLevel(e.target.value)} />
+            <input className='crud-popup-input' type='text' value={inputCrudStyleLocation} onChange={e => setInputCrudStyleLocation(e.target.value)} />
             <select className='crud-popup-input' value={inputCrudStyleStatus} onChange={e => setInputCrudStyleStatus(e.target.value)}>
               <option value='ongoing'>Ongoing</option>
               <option value='terminated'>Terminated</option>

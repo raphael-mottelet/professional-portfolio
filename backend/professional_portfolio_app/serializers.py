@@ -15,12 +15,15 @@ class ExperienceSerializer(serializers.ModelSerializer):
 class EducationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Education
-        fields = ('id', 'date', 'imageSrc', 'title', 'level', 'location', 'description')
+        fields = ('id', 'date', 'imageSrc', 'title', 'level', 'location', 'status', 'description')
         extra_kwargs = {
             'imageSrc': {'required': False},
+            'title': {'required': False},
             'date': {'required': False},
             'level': {'required': False},
             'location': {'required': False},
+            'description': {'required': False},
+            'status': {'choices': Education.STATUS_CHOICES, 'default': 'ongoing'},
         }
 
 class ProjectSerializer(serializers.ModelSerializer):

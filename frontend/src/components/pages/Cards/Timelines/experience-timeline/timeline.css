@@ -1,0 +1,52 @@
+.timeline {
+  position: relative;
+}
+
+.timeline-line {
+  position: absolute;
+  width: 2px; /* Width of the timeline line */
+  background-color: #ccc; /* Color of the timeline line */
+  left: 50%; /* Adjust this value to position the line in the center */
+  transform: translateX(-50%); /* Center the line horizontally */
+}
+
+.timeline-items {
+  position: relative;
+}
+
+.timeline-item {
+  position: relative;
+  padding: 20px; /* Adjust the padding to your preference */
+}
+
+.timeline-dot {
+  position: absolute;
+  width: 12px; /* Diameter of the timeline dot */
+  height: 12px;
+  background-color: #ccc; /* Color of the timeline dot */
+  border-radius: 50%; /* Shape of the dot (circle) */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center the dot */
+}
+
+.timeline-item-content {
+  margin-left: 30px; /* Adjust the margin to create space between dot and content */
+}
+
+.timeline-item-description {
+  margin: 5px 0; /* Adjust the margin to your preference */
+}
+
+/* Animation */
+.timeline-line.active {
+  background-color: #007bff; /* Color of the line when active */
+}
+
+.timeline-dot.active {
+  background-color: #007bff; /* Color of the dot when active */
+}
+
+.animated {
+  transition: opacity 0.5s ease; /* Example animation, adjust as needed */
+}

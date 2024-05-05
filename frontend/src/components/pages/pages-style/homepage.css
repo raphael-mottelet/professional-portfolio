@@ -1,23 +1,26 @@
 .homepage-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  font-family: 'Roboto', sans-serif;
+  color: #333;
+  transition: background-color 0.5s ease-in-out;
+  overflow: hidden;
+}
+
+.content-container {
   margin-left: 221px;
-  margin-top: 8%;
+  transition: margin-left 0.5s ease;
 }
 
-.card-container {
-  margin-top: 20px;
+.content-container.shift-left {
+  margin-left: 0;
+  transition: ease-in 0.5s;
 }
 
-.homepage-title {
-  text-align: center;
-  margin-top: 0px; 
+.section-container {
+  display: flex;
+  margin-top: 100px;  /* Increased margin-top for more spacing */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
 }
-
-
-#homepage { background-color: #ff9ae18e; }
-#experience { background-color: #e0e0e0; }
-#education { background-color: #d0d0d0; }
-#projects { background-color: #c0c0c0; }
-#social { background-color: #b0b0b0; }

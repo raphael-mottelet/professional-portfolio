@@ -1,21 +1,23 @@
-
 import React from 'react';
-import './pages-style/navbar.css';  // Make sure the CSS path is correct as per your project structure
+import './pages-style/navbar.css';
+import ToggleButton from './buttons/toggle_button/toggleButton';
 
-const Navbar = () => {
-  return (
-    <nav className="navbar">
-      <div className="logo">
-        <a href="/">Logo</a>  {/* Replace 'Logo' with your actual logo image if needed */}
-      </div>
-      <div className="search">
-        <input type="text" placeholder="Search..."/>
-      </div>
-      <div className="home">
-        <a href="/">Home</a>
-      </div>
-    </nav>
-  );
+const Navbar = ({ togglePanel, toggleNavbar, isVisible }) => {
+    const navbarClass = `navbar ${isVisible ? 'visible' : 'hiden'}`;
+
+    return (
+        <nav className={navbarClass}>
+            <div className="logo navbar-item">
+                <a href="/">Your Brand</a>
+            </div>
+            <div className="home navbar-item">
+                <ToggleButton handleToggle={togglePanel}/>
+            </div>
+            <div className="search navbar-item">
+                <input type="text" placeholder="Search..." />
+            </div>
+        </nav>
+    );
 };
 
 export default Navbar;

@@ -24,11 +24,19 @@ class Experience(models.Model):
 
 
 class Education(models.Model):
+    ONGOING = 'ongoing'
+    TERMINATED = 'terminated'
+    
+    STATUS_CHOICES = [
+        (ONGOING, 'Ongoing'),
+        (TERMINATED, 'Terminated'),
+    ]
     date = models.CharField(max_length=50)
     imageSrc = models.ImageField(upload_to='education_images/')
     title = models.CharField(max_length=255)
     level = models.CharField(max_length=255)
     location = models.CharField(max_length=255)
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='ongoing')
     description = models.TextField()
 
     def __str__(self):

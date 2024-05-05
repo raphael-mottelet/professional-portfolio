@@ -1,5 +1,5 @@
 import React from 'react';
-import '../pages-style/card.css';
+import './cards-css/card.css';
 
 const ExperienceCard = ({ data }) => (
   <div className='card'>

@@ -1,10 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { IoLogInOutline } from 'react-icons/io5';
-import '../pages-style/card.css'
+import './cards-css/card.css'
 
 const ProjectCard = ({ data }) => (
-  <div className="card" whileHover={{ scale: 1.05 }}>
+  <div className="card" whilehover={{ scale: 1.05 }}>
     <p className="card-title">{data.name}</p>
     <img src={data.imageSrc} className="card-image" alt="" />
     <p className="card-description">{data.techs}</p>
