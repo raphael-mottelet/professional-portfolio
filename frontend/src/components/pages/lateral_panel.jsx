@@ -21,7 +21,7 @@ const LateralPanel = ({ isVisible, activeColor }) => {
       sections.forEach(section => {
         const element = document.getElementById(section);
         const rect = element.getBoundingClientRect();
-        if (rect.top <= window.innerHeight && rect.top >= 0) {
+        if (rect.top <= window.innerHeight/2 && rect.bottom >= window.innerHeight/2) {
           currentSection = section;
         }
       });

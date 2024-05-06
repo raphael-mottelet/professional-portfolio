@@ -92,12 +92,11 @@ function Homepage() {
       <Navbar togglePanel={handleTogglePanel} isVisible={panelVisible} />
       <LateralPanel isVisible={panelVisible} />
       <div className={`content-container ${panelVisible ? '' : 'shift-left'}`}>
-        <Section title="Homepage" id="homepage" data={experiences} component={ExperienceCard} />
-        <Section title="Experience" id="experience" data={experiences} component={ExperienceCard} />
+        <Section title="Welcome on my portfolio" id="homepage" data={experiences} component={ExperienceCard} />
+        <Section title="My experience" id="experience" data={experiences} component={ExperienceCard} />
         <Section title="Education" id="education" data={education} component={EducationCard} />
-
-        <Section title="Projects" id="projects" data={projects} component={ProjectCard} />
-        <Section title="Social" id="social" data={social} component={SocialCard} />
+        <Section title="My projects" id="projects" data={projects} component={ProjectCard} />
+        <Section title="Social media" id="social" data={social} component={SocialCard} />
       </div>
       <Footer togglePanel={handleTogglePanel} isVisible={panelVisible}/>
     </div>

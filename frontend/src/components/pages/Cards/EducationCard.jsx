@@ -9,8 +9,8 @@ const Timeline = ({ data = {} }) => {
   useEffect(() => {
     const handleScroll = () => {
       const timelineItems = document.querySelectorAll('.timeline-item');
-      let firstItemTop = null; // Store the top position of the first item
-      let lastItemBottom = null; // Store the bottom position of the last item
+      let firstItemTop = null;
+      let lastItemBottom = null;
       timelineItems.forEach((item, index) => {
         const itemTop = item.getBoundingClientRect().top + window.scrollY;
         const itemBottom = itemTop + item.offsetHeight;
@@ -21,28 +21,28 @@ const Timeline = ({ data = {} }) => {
           lastItemBottom = itemBottom;
         }
         item.classList.add(index % 2 === 0 ? 'right' : 'left');
-        item.classList.add('animated'); // Add the animated class to trigger fade-in effect
+        item.classList.add('animated');
       });
 
-      // Calculate line position and height based on the first and last item
+ 
       const height = lastItemBottom - firstItemTop;
       setLineHeight(height);
-      setLineTop(firstItemTop + (lastItemBottom - firstItemTop) / 2); // Set lineTop to the middle of the first and last item
+      setLineTop(firstItemTop + (lastItemBottom - firstItemTop) / 2);
     };
 
     const observer = new IntersectionObserver(
       (entries, observer) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('visible'); // Add visible class when item is in view
-            observer.unobserve(entry.target); // Stop observing this item once it's appeared
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
           }
         });
       },
       {
         root: null,
         rootMargin: '0px',
-        threshold: 0.5, // Trigger when at least 50% of the card is visible
+        threshold: 0.5,
       }
     );
 
@@ -52,7 +52,7 @@ const Timeline = ({ data = {} }) => {
     });
 
     window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Call it once to check visibility initially
+    handleScroll();
 
     return () => {
       window.removeEventListener('scroll', handleScroll);

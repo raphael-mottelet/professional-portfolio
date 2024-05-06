@@ -1,7 +1,7 @@
 .project-container {
     position: relative;
     width: 100%;
-    height: 100%; /* You can adjust the height as needed */
+    height: 100%;
   }
   
   .project-card {
@@ -12,7 +12,7 @@
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease-in-out;
-    z-index: 1; /* Ensure cards are positioned above other elements */
+    z-index: 1;
   }
   
   .project-card:hover {

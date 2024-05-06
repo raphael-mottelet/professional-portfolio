@@ -11,7 +11,7 @@ function Homepage() {
   const [inputCrudStyleTitleDescription, setInputCrudStyleTitleDescription] = useState('');
   const [inputCrudStyleStatus, setInputCrudStyleStatus] = useState('ongoing');
   const [activeCrudStyle, setActiveCrudStyle] = useState(null);
-  const [isEditPopupOpen, setIsEditPopupOpen] = useState(false); // State for managing edit popup visibility
+  const [isEditPopupOpen, setIsEditPopupOpen] = useState(false);
 
 
 
@@ -27,22 +27,9 @@ const getAllCrudStyle = () => {
   })
   .catch(err => {
     console.error('Error fetching experience data:', err);
-    // Handle error, such as setting a default value for crudStyle or showing an error message
+
   });
 };
-
-
- /* Old constant who took correct url as parameter but didnt took auth tokens
- 
- const getAllCrudStyle = () => {
-    axios.get(url + 'get_experience/experience/list/')
-      .then(res => {
-        setCrudStyle(res.data);
-      })
-      .catch(err => {
-        console.error(err);
-      });
-  };*/
 
   const CrudStyleMarkStatus = task => {
     axios.put(url + `get_experience/experience/${task.id}/update/`, {
@@ -75,7 +62,7 @@ const getAllCrudStyle = () => {
       setCrudStyle(prevCrudStyle => [...prevCrudStyle, newCrudStyle]);
       setInputCrudStyleTitle('');
       setInputCrudStyleTitleDescription('');
-      setInputCrudStyleStatus('ongoing'); // Reset status after adding
+      setInputCrudStyleStatus('ongoing');
     })
     .catch(err => {
       console.error(err);
@@ -87,18 +74,18 @@ const getAllCrudStyle = () => {
     setInputCrudStyleTitle(task.title);
     setInputCrudStyleTitleDescription(task.description);
     setInputCrudStyleStatus(task.status);
-    setIsEditPopupOpen(true); // Open the edit popup
+    setIsEditPopupOpen(true);
   };
 
   const saveEditedCrudStyle = () => {
-    // Send PUT request to update task
+
     axios.put(url + `get_experience/experience/${activeCrudStyle.id}/update/`, {
       'title': inputCrudStyleTitle,
       'description': inputCrudStyleTitleDescription,
       'status': inputCrudStyleStatus
     }).then(res => {
       getAllCrudStyle();
-      setIsEditPopupOpen(false); // Close the edit popup after saving
+      setIsEditPopupOpen(false);
     }).catch(err => {
       console.error(err);
     });
