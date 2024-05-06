@@ -9,47 +9,45 @@ const Timeline = ({ data = {} }) => {
   useEffect(() => {
     const handleScroll = () => {
       const timelineItems = document.querySelectorAll('.timeline-item');
-      let firstItemTop = null;
-      let lastItemBottom = null;
-      timelineItems.forEach((item, index) => {
-        const itemTop = item.getBoundingClientRect().top + window.scrollY;
-        const itemBottom = itemTop + item.offsetHeight;
-        if (index === 0) {
-          firstItemTop = itemTop;
-        }
-        if (index === timelineItems.length - 1) {
-          lastItemBottom = itemBottom;
-        }
-        item.classList.add(index % 2 === 0 ? 'right' : 'left');
-        item.classList.add('animated');
-      });
+      if (timelineItems.length > 0) {
+        const firstItemRect = timelineItems[0].getBoundingClientRect();
+        const lastItemRect = timelineItems[timelineItems.length - 1].getBoundingClientRect();
+        
+        const firstItemTop = firstItemRect.top + window.scrollY;
+        const lastItemBottom = lastItemRect.bottom + window.scrollY;
 
- 
-      const height = lastItemBottom - firstItemTop;
-      setLineHeight(height);
-      setLineTop(firstItemTop + (lastItemBottom - firstItemTop) / 2);
+        // Calculating relative to the timeline container
+        const timelineTop = timelineRef.current.getBoundingClientRect().top + window.scrollY;
+        const relativeTop = firstItemTop - timelineTop;
+        // Adjust the height so that the line ends at the middle of the last item
+        const adjustedHeight = lastItemBottom - firstItemTop - lastItemRect.height / 2;
+
+        setLineHeight(adjustedHeight);
+        setLineTop(relativeTop);
+
+        // Alternate left/right class assignment
+        timelineItems.forEach((item, index) => {
+          item.classList.add(index % 2 === 0 ? 'right' : 'left');
+          item.classList.add('animated');
+        });
+      }
     };
 
-    const observer = new IntersectionObserver(
-      (entries, observer) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.5,
-      }
-    );
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.5,
+    });
 
     const timelineItems = document.querySelectorAll('.timeline-item');
-    timelineItems.forEach((item) => {
-      observer.observe(item);
-    });
+    timelineItems.forEach(item => observer.observe(item));
 
     window.addEventListener('scroll', handleScroll);
     handleScroll();
@@ -62,6 +60,7 @@ const Timeline = ({ data = {} }) => {
 
   return (
     <div className="timeline" ref={timelineRef}>
+      <div className="timeline-central-line" style={{ top: `${lineTop}px`, height: `${lineHeight}px` }}></div>
       <div className="timeline-items">
         <div className="timeline-item">
           <div className="timeline-dot"></div>

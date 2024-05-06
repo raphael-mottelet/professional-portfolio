@@ -1,5 +1,3 @@
-/* timeline.css */
-
 .timeline {
   position: relative;
   margin: 50px auto;
@@ -60,11 +58,11 @@
 }
 
 .timeline-item.left .timeline-dot {
-  right: -70px;
+  right: calc(-15% - 13px);
 }
 
 .timeline-item.right .timeline-dot {
-  left: -70px;
+  left: calc(-14% - 15px);
 }
 
 .timeline-item-content {
@@ -131,7 +129,7 @@
 
 .timeline-line-to-dot {
   position: absolute;
-  width: 75px;
+  width: calc(16% - 2px);
   height: 2px;
   background-color: #000000;
   opacity: 0;
@@ -142,13 +140,23 @@
 }
 
 .timeline-item.left .timeline-line-to-dot {
-  right: -70px;
+  right: calc(-18% + 12px);
 }
 
 .timeline-item.right .timeline-line-to-dot {
-  left: -70px;
+  left: calc(-14% - 2px);
 }
 
 .timeline-item.visible .timeline-line-to-dot {
   opacity: 1;
+}
+
+.timeline-central-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%; /* Center the line */
+  width: 2px; /* Width of the line */
+  background-color: #333; /* Color of the line */
+  z-index: 1; /* Ensure it's above other elements but below the content */
 }
