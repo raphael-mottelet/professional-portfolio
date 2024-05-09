@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './pages-style/lateral_panel.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSchool, faBriefcase, faProjectDiagram, faUsers } from '@fortawesome/free-solid-svg-icons';
+import { faSchool, faBriefcase, faProjectDiagram, faUsers, faBook } from '@fortawesome/free-solid-svg-icons';
 
-const sections = ['experience', 'education', 'projects', 'social'];
+const sections = ['presentation','experience', 'education', 'projects', 'social'];
 
 const sectionIcons = {
+  presentation: faBook,
   experience: faBriefcase,
   education: faSchool,
   projects: faProjectDiagram,

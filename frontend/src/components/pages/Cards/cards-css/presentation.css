@@ -1,0 +1,49 @@
+.presentation-card {
+    color: white;
+    font-size: 18px; /* You can adjust the size for your blog */
+    display: flex;
+    align-items: center;
+    background-color: #333; /* Dark background for better visibility of white text */
+    padding: 20px;
+    margin-bottom: 20px; /* Space between cards */
+  }
+  
+  .presentation-card-image {
+    width: 100px; /* Adjust based on your preference */
+    margin-right: 20px;
+    align-self: start;
+  }
+  
+  .presentation-card-title {
+    font-size: 24px; /* Larger text for the title */
+    font-weight: bold;
+  }
+  
+  .presentation-card-description {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid white; /* Cursor-like styling */
+    animation: typing 4s steps(40, end) 1s 1 normal both, blink-caret .75s step-end infinite;
+  }
+  
+  /* Typing animation keyframes */
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+  
+  /* Cursor blink animation */
+  @keyframes blink-caret {
+    from, to {
+      border-color: transparent;
+    }
+    50% {
+      border-color: white;
+    }
+  }
+  

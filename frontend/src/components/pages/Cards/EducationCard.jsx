@@ -16,16 +16,13 @@ const Timeline = ({ data = {} }) => {
         const firstItemTop = firstItemRect.top + window.scrollY;
         const lastItemBottom = lastItemRect.bottom + window.scrollY;
 
-        // Calculating relative to the timeline container
         const timelineTop = timelineRef.current.getBoundingClientRect().top + window.scrollY;
         const relativeTop = firstItemTop - timelineTop;
-        // Adjust the height so that the line ends at the middle of the last item
         const adjustedHeight = lastItemBottom - firstItemTop - lastItemRect.height / 2;
 
         setLineHeight(adjustedHeight);
         setLineTop(relativeTop);
 
-        // Alternate left/right class assignment
         timelineItems.forEach((item, index) => {
           item.classList.add(index % 2 === 0 ? 'right' : 'left');
           item.classList.add('animated');

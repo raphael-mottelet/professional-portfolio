@@ -4,7 +4,8 @@ import LateralPanel from './lateral_panel';
 import './pages-style/homepage.css';
 
 import ExperienceCard from './Cards/ExperienceCard';
-import EducationCard from './Cards/EducationCard';
+import PresentationCard from './Cards/PresentationCard'; // Updated import
+import EducationCard from './Cards/EducationCard'; // Retained import
 import ProjectCard from './Cards/ProjectCard';
 import SocialCard from './Cards/SocialLinksCard';
 import Footer from './footer';
@@ -13,15 +14,18 @@ const sectionColors = {
   homepage: '#ff9a8a',
   experience: '#6ad4c4',
   education: '#ffcf7e',
+  presentation: '#ffb347', // Updated section color
   projects: '#b8a9c9',
   social: '#f2c2a9'
 };
 
 function Homepage() {
+  const url = 'http://127.0.0.1:8000/';
   const [experiences, setExperiences] = useState([]);
   const [education, setEducation] = useState([]);
   const [projects, setProjects] = useState([]);
   const [social, setSocial] = useState([]);
+  const [presentation, setPresentation] = useState([]); // Updated state for presentation
   const [backgroundColor, setBackgroundColor] = useState(sectionColors['homepage']);
   const [panelVisible, setPanelVisible] = useState(true);
 
@@ -34,21 +38,18 @@ function Homepage() {
   }, []);
 
   const fetchData = async () => {
-    const url = 'http://127.0.0.1:8000/';
     try {
       const experienceResponse = await fetch(url + 'get_experience/experience/list');
       const educationResponse = await fetch(url + 'get_education/education/list');
       const projectsResponse = await fetch(url + 'get_projects/projects/list');
       const socialResponse = await fetch(url + 'get_social-links/social-links/list');
 
-      // Ensuring that fetched data arrays are handled properly
       setExperiences(await experienceResponse.json() || []);
       setEducation(await educationResponse.json() || []);
       setProjects(await projectsResponse.json() || []);
       setSocial(await socialResponse.json() || []);
     } catch (error) {
       console.error('Error fetching data:', error);
-      // Handling potential fetch errors by setting empty defaults
       setExperiences([]);
       setEducation([]);
       setProjects([]);
@@ -92,7 +93,7 @@ function Homepage() {
       <Navbar togglePanel={handleTogglePanel} isVisible={panelVisible} />
       <LateralPanel isVisible={panelVisible} />
       <div className={`content-container ${panelVisible ? '' : 'shift-left'}`}>
-        <Section title="Welcome on my portfolio" id="homepage" data={experiences} component={ExperienceCard} />
+        <Section title="Presentation" id="presentation" component={PresentationCard} />
         <Section title="My experience" id="experience" data={experiences} component={ExperienceCard} />
         <Section title="Education" id="education" data={education} component={EducationCard} />
         <Section title="My projects" id="projects" data={projects} component={ProjectCard} />

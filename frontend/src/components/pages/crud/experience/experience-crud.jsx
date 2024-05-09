@@ -1,8 +1,8 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
-import '../pages-style/crud-style.css';
-import '../pages-style/button-styling.css';
+import '../../pages-style/crud-style.css';
+import '../../pages-style/button-styling.css';
 
 function Homepage() {
   const url = 'http://127.0.0.1:8000/';

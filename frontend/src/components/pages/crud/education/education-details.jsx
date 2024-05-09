@@ -18,6 +18,7 @@ function ExperienceDetail(props) {
         console.error(err)
       })
   }
+  
 
 
   return (

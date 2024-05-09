@@ -1,19 +1,20 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
-import '../pages-style/crud-style.css';
-import '../pages-style/button-styling.css';
+import '../../pages-style/crud-style.css';
+import '../../pages-style/button-styling.css';
 
-function SocialLinksCrud() {
+function ProjectCrud() {
   const url = 'http://127.0.0.1:8000/';
   const [crudStyle, setCrudStyle] = useState([]);
   const [inputCrudStyleTitle, setInputCrudStyleTitle] = useState('');
-  const [inputCrudStyleDescription, setInputCrudStyleDescription] = useState('');
+  const [inputCrudStyleTechs, setInputCrudStyleTechs] = useState('');
+  const [inputCrudStyleGithub, setInputCrudStyleGithub] = useState('');
   const [activeCrudStyle, setActiveCrudStyle] = useState(null);
-  const [isEditPopupOpen, setIsEditPopupOpen] = useState(false); 
+  const [isEditPopupOpen, setIsEditPopupOpen] = useState(false);
 
   const getAllCrudStyle = () => {
-    axios.get(url + 'get_social-links/social-links/list/')
+    axios.get(url + 'get_projects/projects/list/')
       .then(res => {
         setCrudStyle(res.data);
       })
@@ -23,14 +24,16 @@ function SocialLinksCrud() {
   };
 
   const addCrudStyle = () => {
-    axios.post(url + 'get_social-links/social-links/create/', {
+    axios.post(url + 'get_projects/projects/create/', {
       'name': inputCrudStyleTitle,
-      'link': inputCrudStyleDescription
+      'techs': inputCrudStyleTechs,
+      'github': inputCrudStyleGithub
     }).then(res => {
       const newCrudStyle = res.data;
       setCrudStyle(prevCrudStyle => [...prevCrudStyle, newCrudStyle]);
       setInputCrudStyleTitle('');
-      setInputCrudStyleDescription('');
+      setInputCrudStyleTechs('');
+      setInputCrudStyleGithub('');
     }).catch(err => {
       console.error(err);
     });
@@ -39,24 +42,26 @@ function SocialLinksCrud() {
   const updateCrudStyle = task => {
     setActiveCrudStyle(task);
     setInputCrudStyleTitle(task.name);
-    setInputCrudStyleDescription(task.link);
-    setIsEditPopupOpen(true); 
+    setInputCrudStyleTechs(task.techs);
+    setInputCrudStyleGithub(task.github);
+    setIsEditPopupOpen(true);
   };
 
   const saveEditedCrudStyle = () => {
-    axios.put(url + `get_social-links/social-links/${activeCrudStyle.id}/update/`, {
+    axios.put(url + `get_projects/projects/${activeCrudStyle.id}/update/`, {
       'name': inputCrudStyleTitle,
-      'link': inputCrudStyleDescription
+      'techs': inputCrudStyleTechs,
+      'github': inputCrudStyleGithub
     }).then(res => {
       getAllCrudStyle();
-      setIsEditPopupOpen(false); 
+      setIsEditPopupOpen(false);
     }).catch(err => {
       console.error(err);
     });
   };
 
   const deleteCrudStyle = task => {
-    axios.delete(url + `get_social-links/social-links/${task.id}/destroy/`)
+    axios.delete(url + `get_projects/projects/${task.id}/destroy/`)
       .then(res => {
         getAllCrudStyle();
       })
@@ -69,8 +74,12 @@ function SocialLinksCrud() {
     setInputCrudStyleTitle(e.target.value);
   };
 
-  const DescriptionChange = f => {
-    setInputCrudStyleDescription(f.target.value);
+  const handleTechsChange = e => {
+    setInputCrudStyleTechs(e.target.value);
+  };
+
+  const handleGithubChange = e => {
+    setInputCrudStyleGithub(e.target.value);
   };
 
   useEffect(() => {
@@ -83,22 +92,28 @@ function SocialLinksCrud() {
         <div className='crud-style-input'>
           <input 
             type="text" 
-            placeholder="Add a name"
+            placeholder="Add a title"
             value={inputCrudStyleTitle}
             onChange={e => handleChange(e)}
           />
           <input 
             type="text" 
-            placeholder="Add a link"
-            value={inputCrudStyleDescription}
-            onChange={f => DescriptionChange(f)}
+            placeholder="Add technologies"
+            value={inputCrudStyleTechs}
+            onChange={e => handleTechsChange(e)}
+          />
+          <input 
+            type="url" 
+            placeholder="Add Github URL"
+            value={inputCrudStyleGithub}
+            onChange={e => handleGithubChange(e)}
           />
           <button 
             onClick={addCrudStyle} 
-            disabled={!inputCrudStyleTitle.trim() || !inputCrudStyleDescription.trim()}
+            disabled={!inputCrudStyleTitle.trim()}
             className='crud-style-button'
           >
-            Submit
+            Add Project
           </button>
         </div>
       </div>
@@ -111,8 +126,13 @@ function SocialLinksCrud() {
                   <div className='crud-style-title'>
                     {task.name}
                   </div>
-                  <div className='crud-style-description'>
-                    <a href={task.link} target="_blank" rel="noopener noreferrer">{task.link}</a>
+                  <div className='crud-style-techs'>
+                    {task.techs}
+                  </div>
+                  <div className='crud-style-github'>
+                    <a href={task.github} target="_blank" rel="noopener noreferrer">
+                      Github
+                    </a>
                   </div>
                   <div className='home-button'>
                     <button onClick={() => updateCrudStyle(task)} className='crud-style-button'>Edit</button>
@@ -127,13 +147,14 @@ function SocialLinksCrud() {
         </ul>
       </div>
       {isEditPopupOpen && activeCrudStyle && (
-        <div className="popup-container">
-          <div className="popup-content">
-            <h2 className='edtion-popup-title'>Edit Task</h2>
-            <input className="crud-popup-input" type="text" value={inputCrudStyleTitle} onChange={e => setInputCrudStyleTitle(e.target.value)} />
-            <input className="crud-popup-input" type="text" value={inputCrudStyleDescription} onChange={f => setInputCrudStyleDescription(f.target.value)} />
-            <button className="popup-button" onClick={saveEditedCrudStyle}>Save</button>
-            <button className="popup-button" onClick={() => setIsEditPopupOpen(false)}>Cancel</button>
+        <div className='popup-container'>
+          <div className='popup-content projects-popup'>
+            <h2 className='popup-title'>Edit Project</h2>
+            <input className='crud-popup-input' type='text' value={inputCrudStyleTitle} onChange={e => setInputCrudStyleTitle(e.target.value)} />
+            <input className='crud-popup-input' type='text' value={inputCrudStyleTechs} onChange={e => setInputCrudStyleTechs(e.target.value)} />
+            <input className='crud-popup-input' type='url' value={inputCrudStyleGithub} onChange={e => setInputCrudStyleGithub(e.target.value)} />
+            <button className='popup-button' onClick={saveEditedCrudStyle}>Save</button>
+            <button className='popup-button' onClick={() => setIsEditPopupOpen(false)}>Cancel</button>
           </div>
         </div>
       )}
@@ -141,4 +162,4 @@ function SocialLinksCrud() {
   );
 }
 
-export default SocialLinksCrud;
+export default ProjectCrud;

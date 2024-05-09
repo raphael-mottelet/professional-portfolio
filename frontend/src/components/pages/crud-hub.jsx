@@ -1,10 +1,8 @@
-// CrudHub.jsx
-
 import React, { useState } from 'react';
-import EducationPage from './education/education-crud';
-import ExperiencePage from './experience/experience-crud';
-import SocialLinksPage from './social-link/social-links-crud';
-import ProjectPage from './projects/project-crud';
+import EducationPage from './crud/education/education-crud';
+import ExperiencePage from './crud/experience/experience-crud';
+import SocialLinksPage from './crud/social-link/social-links-crud';
+import ProjectPage from './crud/projects/project-crud';
 import './pages-style/crud-hub-style.css';
 
 function CrudHub() {
@@ -19,6 +17,7 @@ function CrudHub() {
       <h1 className="crud-manager-title">crud manager</h1>
       <select value={selectedCrud} onChange={handleSelectChange}>
         <option className="crud-hub-value" value="">Sélectionner un CRUD</option>
+        <option className="crud-hub-value" value="presentation">Presentation</option>
         <option className="crud-hub-value" value="education">Education</option>
         <option className="crud-hub-value" value="experience">Experience</option>
         <option className="crud-hub-value" value="sociallinks">Social Links</option>
@@ -29,6 +28,7 @@ function CrudHub() {
         {selectedCrud === 'experience' && <ExperiencePage className="crud-content" />}
         {selectedCrud === 'sociallinks' && <SocialLinksPage className="crud-content" />}
         {selectedCrud === 'project' && <ProjectPage className="crud-content" />}
+
       </div>
     </div>
   );
