@@ -1,7 +1,7 @@
 import React from 'react';
 import './cards-css/card.css';
 
-const PresentationCard = ({ data }) => (
+const ExperienceCard = ({ data }) => (
   <div className='card'>
     <p className="card-title">{data.title}</p>
     <p className="card-description">{data.description}</p>
@@ -9,4 +9,4 @@ const PresentationCard = ({ data }) => (
   </div>
 );
 
-export default PresentationCard;
+export default ExperienceCard;

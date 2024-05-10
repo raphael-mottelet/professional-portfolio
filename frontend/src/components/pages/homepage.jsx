@@ -11,12 +11,11 @@ import SocialCard from './Cards/SocialLinksCard';
 import Footer from './footer';
 
 const sectionColors = {
-  homepage: '#ff9a8a',
-  experience: '#6ad4c4',
-  education: '#ffcf7e',
-  presentation: '#ffb347', // Updated section color
-  projects: '#b8a9c9',
-  social: '#f2c2a9'
+  presentation: '#333333', // Dark gray
+  experience: '#333333', // Same as presentation, consider differentiating if needed
+  education: '#00d49e', // Light green
+  projects: '#b8a9c9', // Lavender
+  social: '#ff7eb0'    // Light orange
 };
 
 function Homepage() {
@@ -25,8 +24,8 @@ function Homepage() {
   const [education, setEducation] = useState([]);
   const [projects, setProjects] = useState([]);
   const [social, setSocial] = useState([]);
-  const [presentation, setPresentation] = useState([]); // Updated state for presentation
-  const [backgroundColor, setBackgroundColor] = useState(sectionColors['homepage']);
+  const [presentation, setPresentation] = useState([]);
+  const [backgroundColor, setBackgroundColor] = useState(sectionColors['presentation']); // Corrected to use a valid key
   const [panelVisible, setPanelVisible] = useState(true);
 
   useEffect(() => {
@@ -39,11 +38,13 @@ function Homepage() {
 
   const fetchData = async () => {
     try {
+      const presentationResponse = await fetch(url + 'get_presentation/presentation/list');
       const experienceResponse = await fetch(url + 'get_experience/experience/list');
       const educationResponse = await fetch(url + 'get_education/education/list');
       const projectsResponse = await fetch(url + 'get_projects/projects/list');
       const socialResponse = await fetch(url + 'get_social-links/social-links/list');
 
+      setPresentation(await presentationResponse.json() || []);
       setExperiences(await experienceResponse.json() || []);
       setEducation(await educationResponse.json() || []);
       setProjects(await projectsResponse.json() || []);
@@ -89,11 +90,11 @@ function Homepage() {
   };
 
   return (
-    <div className="homepage-container" style={{ backgroundColor: backgroundColor }}>
+    <div className="homepage-container" style={{ backgroundColor }}>
       <Navbar togglePanel={handleTogglePanel} isVisible={panelVisible} />
       <LateralPanel isVisible={panelVisible} />
       <div className={`content-container ${panelVisible ? '' : 'shift-left'}`}>
-        <Section title="Presentation" id="presentation" component={PresentationCard} />
+        <Section title='' id="presentation" data={presentation} component={PresentationCard} />
         <Section title="My experience" id="experience" data={experiences} component={ExperienceCard} />
         <Section title="Education" id="education" data={education} component={EducationCard} />
         <Section title="My projects" id="projects" data={projects} component={ProjectCard} />

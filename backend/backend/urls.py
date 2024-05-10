@@ -6,6 +6,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', ListExperienceView.as_view(), name='list_experience'),
 
+    path('get_presentation/', include('professional_portfolio_app.app_urls')),
     path('get_experience/', include('professional_portfolio_app.app_urls')),
     path('get_education/', include('professional_portfolio_app.app_urls')),  
     path('get_projects/', include('professional_portfolio_app.app_urls')),  

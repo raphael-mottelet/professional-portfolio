@@ -1,5 +1,17 @@
 from rest_framework import serializers
-from .models import Experience, Education, Project, SocialLink
+from .models import Experience, Education, Project, SocialLink, Presentation
+
+
+
+class PresentationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Presentation
+        fields = ('id','image', 'title','description')
+        extra_kwargs = {
+            'image': {'required': False},
+            'title': {'required': False},
+            'description': {'required': False},
+        }
 
 class ExperienceSerializer(serializers.ModelSerializer):
     class Meta:

@@ -1,49 +1,72 @@
+/* Flexbox layout for presentation card */
 .presentation-card {
-    color: white;
-    font-size: 18px; /* You can adjust the size for your blog */
-    display: flex;
-    align-items: center;
-    background-color: #333; /* Dark background for better visibility of white text */
-    padding: 20px;
-    margin-bottom: 20px; /* Space between cards */
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+  margin-top: -20%;
+}
+
+/* Styling for the presentation card title */
+.presentation-card-title {
+  margin-top: 410px;
+  margin-bottom: 100px;
+  width: 50%;
+  overflow: hidden;
+  color: white;
+  font-size: 50px;
+  font-family: monospace;
+  white-space: nowrap;
+  border-right: 4px solid orange;
+  animation: printed-text 3s steps(21), flashin-border .75s step-start infinite;
+}
+
+/* Styling for the presentation card description container */
+.presentation-card-description-container {
+  height: 200px;
+  overflow: auto;
+}
+
+/* Styling for the presentation card description */
+.presentation-card-description {
+  color: white;
+  font-size: 25px;
+  line-height: 2;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  white-space: pre-line;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.presentation-card-description.fade-in {
+  opacity: 1;
+}
+
+/* CSS for image display within presentation card */
+.presentation-card-image {
+  max-width: 100%; /* Ensure the image does not exceed the width of the card */
+  height: auto; /* Maintain the aspect ratio of the image */
+  display: block; /* Ensure images are not displayed inline */
+  margin: 10px auto; /* Center image within the card and add some margin */
+}
+
+/* Animation for flashing border */
+@keyframes flashin-border {
+  0% {
+    border-color: rgb(255, 255, 255);
   }
-  
-  .presentation-card-image {
-    width: 100px; /* Adjust based on your preference */
-    margin-right: 20px;
-    align-self: start;
+  50% {
+    border-color: transparent;
   }
-  
-  .presentation-card-title {
-    font-size: 24px; /* Larger text for the title */
-    font-weight: bold;
+  100% {
+    border-color: rgb(255, 255, 255);
   }
-  
-  .presentation-card-description {
-    width: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-    border-right: 3px solid white; /* Cursor-like styling */
-    animation: typing 4s steps(40, end) 1s 1 normal both, blink-caret .75s step-end infinite;
+}
+
+/* Animation for simulating typing effect */
+@keyframes printed-text {
+  from {
+    width: 0%;
   }
-  
-  /* Typing animation keyframes */
-  @keyframes typing {
-    from {
-      width: 0;
-    }
-    to {
-      width: 100%;
-    }
-  }
-  
-  /* Cursor blink animation */
-  @keyframes blink-caret {
-    from, to {
-      border-color: transparent;
-    }
-    50% {
-      border-color: white;
-    }
-  }
-  
+}

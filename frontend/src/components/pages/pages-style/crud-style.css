@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 70%;
   padding: 20px;
 }
 
@@ -18,22 +19,24 @@
 }
 
 .crud-style-input input[type="text"],
+.crud-style-input input[type="date"],
 .crud-style-input select {
-  margin-bottom: 10px;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 1rem;
+  margin-bottom: 15px; /* Increased margin */
+  padding: 15px; /* Increased padding */
+  border: 2px solid #969696; /* Increased border width */
+  border-radius: 10px; /* Increased border radius */
+  font-size: 1.1rem; /* Slightly larger font size */
+  outline: none; /* Remove outline */
 }
 
 .crud-style-field {
-  padding: 12px 24px;
+  padding: 15px 30px; /* Increased padding */
   background-color: #007bff;
   color: #fff;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1.1rem; /* Slightly larger font size */
   transition: background-color 0.3s ease;
 }
 
@@ -50,8 +53,7 @@
 
 .crud-style-content {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column; /* Updated to column */
   padding: 20px;
   background-color: #f9f9f9;
   border-radius: 12px;
@@ -65,16 +67,15 @@
 }
 
 .crud-style-title {
-  flex-grow: 1;
-  font-size: 1.2rem;
+  font-size: 1.3rem; /* Increased font size */
   color: #333;
+  margin-bottom: 10px; /* Add margin bottom to separate title and description */
 }
 
-.crud-style-status {
-  font-size: 0.9rem;
-  margin-left: 10px;
-  font-style: italic;
+.crud-style-description {
+  font-size: 1.1rem; /* Increased font size */
   color: #555;
+  margin-bottom: 10px; /* Add margin bottom to separate title and description */
 }
 
 .crud-style-button-container {
@@ -84,11 +85,11 @@
 
 .crud-style-button {
   margin-left: 10px;
-  padding: 10px 20px;
+  padding: 12px 24px; /* Increased padding */
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1.1rem; /* Slightly larger font size */
   transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
 

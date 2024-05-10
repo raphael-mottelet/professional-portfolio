@@ -3,6 +3,7 @@ import EducationPage from './crud/education/education-crud';
 import ExperiencePage from './crud/experience/experience-crud';
 import SocialLinksPage from './crud/social-link/social-links-crud';
 import ProjectPage from './crud/projects/project-crud';
+import PresentationCrud from './crud/presentation/presentation';
 import './pages-style/crud-hub-style.css';
 
 function CrudHub() {
@@ -24,6 +25,7 @@ function CrudHub() {
         <option className="crud-hub-value" value="project">Project</option>
       </select>
       <div className="crud-display">
+        {selectedCrud === 'presentation' && <PresentationCrud className="crud-content" />}
         {selectedCrud === 'education' && <EducationPage className="crud-content" />}
         {selectedCrud === 'experience' && <ExperiencePage className="crud-content" />}
         {selectedCrud === 'sociallinks' && <SocialLinksPage className="crud-content" />}

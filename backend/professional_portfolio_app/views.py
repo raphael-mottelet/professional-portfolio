@@ -2,13 +2,35 @@ from django.shortcuts import render
 
 from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView, UpdateAPIView, DestroyAPIView
 
-from .models import Education, Experience, Project, SocialLink
-from .serializers import ExperienceSerializer, EducationSerializer, SocialLinkSerializer, ProjectSerializer
+from .models import Education, Experience, Project, SocialLink, Presentation
+from .serializers import ExperienceSerializer, EducationSerializer, SocialLinkSerializer, ProjectSerializer, PresentationSerializer
+
+
+class ListPresentationView(ListAPIView):
+    queryset = Presentation.objects.all()
+    serializer_class = PresentationSerializer
+
+class CreatePresentationView(CreateAPIView):
+    queryset = Presentation.objects.all()
+    serializer_class = PresentationSerializer
+    
+class UpdatePresentationView(UpdateAPIView):
+    queryset = Presentation.objects.all()
+    serializer_class = PresentationSerializer
+    
+class DestroyPresentationView(DestroyAPIView):
+    queryset = Presentation.objects.all()
+    serializer_class = PresentationSerializer
+    
+class PresentationDetails(RetrieveAPIView):
+    queryset = Presentation.objects.all()
+    serializer_class = PresentationSerializer
+
+
 
 class ListExperienceView(ListAPIView):
     queryset = Experience.objects.all()
     serializer_class = ExperienceSerializer
-    
 
 class CreateExperienceView(CreateAPIView):
     queryset = Experience.objects.all()

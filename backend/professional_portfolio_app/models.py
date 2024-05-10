@@ -1,8 +1,15 @@
 from django.db import models
-from django.utils import timezone
-import uuid
-
 from django.db import models
+
+
+class Presentation(models.Model):
+    image = models.ImageField(upload_to='presentation_images/')
+    title = models.CharField(max_length=255)
+    description = models.TextField()
+
+    def __str__(self):
+        return self.title
+    
 
 class Experience(models.Model):
     ONGOING = 'ongoing'

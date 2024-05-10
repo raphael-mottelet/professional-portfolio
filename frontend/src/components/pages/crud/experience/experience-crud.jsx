@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import '../../pages-style/crud-style.css';
 import '../../pages-style/button-styling.css';
 
-function Homepage() {
+function ExperienceCrud() {
   const url = 'http://127.0.0.1:8000/';
   const [crudStyle, setCrudStyle] = useState([]);
   const [inputCrudStyleTitle, setInputCrudStyleTitle] = useState('');
@@ -191,4 +191,4 @@ const getAllCrudStyle = () => {
   );
 }
 
-export default Homepage;
+export default ExperienceCrud;
