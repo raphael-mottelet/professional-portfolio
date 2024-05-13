@@ -182,6 +182,18 @@ function EducationCrud() {
                   <div className='crud-style-title'>
                     {task.title}
                   </div>
+                  <div className='crud-style-description'>
+                    {task.handleLevelChange}
+                  </div>
+                  <div className='crud-style-date'>
+                    {task.date}
+                  </div>
+                  <div className='crud-style-description'>
+                    {task.description}
+                  </div>
+                  <div className='crud-style-location'>
+                    {task.location}
+                  </div>
                   <div className='crud-style-status'>
                     {task.status === 'ongoing' ? 
                       <span className='ongoing-mission'>Ongoing</span> : 

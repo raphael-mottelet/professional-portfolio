@@ -7,7 +7,8 @@ const ProjectCard = ({ data }) => (
   <div className="card" whilehover={{ scale: 1.05 }}>
     <p className="card-title">{data.name}</p>
     <img src={data.imageSrc} className="card-image" alt="" />
-    <p className="card-description">{data.techs}</p>
+    <p className="card-description">{data.description}</p>
+    <p className="card-description-techs">{data.techs}</p>
     <a href={data.github}>
       <IoLogInOutline className="card-icon" />
     </a>

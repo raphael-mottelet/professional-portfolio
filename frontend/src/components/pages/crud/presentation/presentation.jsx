@@ -122,10 +122,10 @@ function PresentationCrud() {
       {isEditPopupOpen && activePresentation && (
         <div className='popup-container'>
           <div className='popup-content'>
-            <h2 className='popup-title'>Edit Presentation</h2>
-            <input type='text' value={inputPresentationTitle} onChange={handleChangeTitle} />
-            <input type='text' value={inputPresentationDescription} onChange={handleChangeDescription} />
-            <input type='file' onChange={handleImageChange} />
+            <h2 className='crud-popup-input'>Edit Presentation</h2>
+            <input classname='crud-popup-input' type='text' value={inputPresentationTitle} onChange={handleChangeTitle} />
+            <input classname='crud-popup-input' type='text' value={inputPresentationDescription} onChange={handleChangeDescription} />
+            <input classname='crud-popup-input' type='file' onChange={handleImageChange} />
             <button onClick={saveEditedPresentation} className='popup-button'>Save</button>
             <button onClick={() => setIsEditPopupOpen(false)} className='popup-button'>Cancel</button>
           </div>

@@ -19,7 +19,7 @@ class Experience(models.Model):
         (ONGOING, 'Ongoing'),
         (TERMINATED, 'Terminated'),
     ]
-    date = models.CharField(max_length=50)
+    date = models.DateField()
     imageSrc = models.ImageField(upload_to='experience_images/', default='default_image.jpg')
     title = models.CharField(max_length=255)
     location = models.CharField(max_length=100,default='')  # Define the location field
@@ -52,6 +52,7 @@ class Education(models.Model):
 class Project(models.Model):
     name = models.CharField(max_length=255)
     imageSrc = models.ImageField(upload_to='project_images/')
+    description = models.TextField(default='')
     techs = models.CharField(max_length=255)
     github = models.URLField(blank=True, null=True)
 

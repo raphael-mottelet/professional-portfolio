@@ -15,7 +15,7 @@ const sectionColors = {
   experience: '#333333', // Same as presentation, consider differentiating if needed
   education: '#00d49e', // Light green
   projects: '#b8a9c9', // Lavender
-  social: '#ff7eb0'    // Light orange
+  social: '#ffcf5a'    // Light orange
 };
 
 function Homepage() {

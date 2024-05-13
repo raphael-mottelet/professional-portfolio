@@ -8,6 +8,7 @@ function ProjectCrud() {
   const url = 'http://127.0.0.1:8000/';
   const [crudStyle, setCrudStyle] = useState([]);
   const [inputCrudStyleTitle, setInputCrudStyleTitle] = useState('');
+  const [inputCrudStyleDescription, setInputCrudStyleDescription] = useState('');
   const [inputCrudStyleTechs, setInputCrudStyleTechs] = useState('');
   const [inputCrudStyleGithub, setInputCrudStyleGithub] = useState('');
   const [activeCrudStyle, setActiveCrudStyle] = useState(null);
@@ -26,12 +27,14 @@ function ProjectCrud() {
   const addCrudStyle = () => {
     axios.post(url + 'get_projects/projects/create/', {
       'name': inputCrudStyleTitle,
+      'description': inputCrudStyleDescription,
       'techs': inputCrudStyleTechs,
       'github': inputCrudStyleGithub
     }).then(res => {
       const newCrudStyle = res.data;
       setCrudStyle(prevCrudStyle => [...prevCrudStyle, newCrudStyle]);
       setInputCrudStyleTitle('');
+      setInputCrudStyleDescription('');
       setInputCrudStyleTechs('');
       setInputCrudStyleGithub('');
     }).catch(err => {
@@ -42,6 +45,7 @@ function ProjectCrud() {
   const updateCrudStyle = task => {
     setActiveCrudStyle(task);
     setInputCrudStyleTitle(task.name);
+    setInputCrudStyleDescription(task.description);
     setInputCrudStyleTechs(task.techs);
     setInputCrudStyleGithub(task.github);
     setIsEditPopupOpen(true);
@@ -50,6 +54,7 @@ function ProjectCrud() {
   const saveEditedCrudStyle = () => {
     axios.put(url + `get_projects/projects/${activeCrudStyle.id}/update/`, {
       'name': inputCrudStyleTitle,
+      'description': inputCrudStyleDescription,
       'techs': inputCrudStyleTechs,
       'github': inputCrudStyleGithub
     }).then(res => {
@@ -74,6 +79,10 @@ function ProjectCrud() {
     setInputCrudStyleTitle(e.target.value);
   };
 
+  const handleDescriptionChange = e => {
+    setInputCrudStyleDescription(e.target.value);
+  };
+
   const handleTechsChange = e => {
     setInputCrudStyleTechs(e.target.value);
   };
@@ -95,6 +104,12 @@ function ProjectCrud() {
             placeholder="Add a title"
             value={inputCrudStyleTitle}
             onChange={e => handleChange(e)}
+          />
+          <input 
+            type="text" 
+            placeholder="Add a description"
+            value={inputCrudStyleDescription}
+            onChange={e => handleDescriptionChange(e)}
           />
           <input 
             type="text" 
@@ -126,6 +141,9 @@ function ProjectCrud() {
                   <div className='crud-style-title'>
                     {task.name}
                   </div>
+                  <div className='crud-style-description'>
+                    {task.description}
+                  </div>
                   <div className='crud-style-techs'>
                     {task.techs}
                   </div>
@@ -151,6 +169,7 @@ function ProjectCrud() {
           <div className='popup-content projects-popup'>
             <h2 className='popup-title'>Edit Project</h2>
             <input className='crud-popup-input' type='text' value={inputCrudStyleTitle} onChange={e => setInputCrudStyleTitle(e.target.value)} />
+            <input className='crud-popup-input' type='text' value={inputCrudStyleDescription} onChange={e => setInputCrudStyleDescription(e.target.value)} />
             <input className='crud-popup-input' type='text' value={inputCrudStyleTechs} onChange={e => setInputCrudStyleTechs(e.target.value)} />
             <input className='crud-popup-input' type='url' value={inputCrudStyleGithub} onChange={e => setInputCrudStyleGithub(e.target.value)} />
             <button className='popup-button' onClick={saveEditedCrudStyle}>Save</button>

@@ -21,22 +21,22 @@
 .crud-style-input input[type="text"],
 .crud-style-input input[type="date"],
 .crud-style-input select {
-  margin-bottom: 15px; /* Increased margin */
-  padding: 15px; /* Increased padding */
-  border: 2px solid #969696; /* Increased border width */
-  border-radius: 10px; /* Increased border radius */
-  font-size: 1.1rem; /* Slightly larger font size */
-  outline: none; /* Remove outline */
+  margin-bottom: 15px;
+  padding: 15px;
+  border: 2px solid #969696;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  outline: none;
 }
 
 .crud-style-field {
-  padding: 15px 30px; /* Increased padding */
+  padding: 15px 30px;
   background-color: #007bff;
   color: #fff;
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  font-size: 1.1rem; /* Slightly larger font size */
+  font-size: 1.1rem;
   transition: background-color 0.3s ease;
 }
 
@@ -53,7 +53,7 @@
 
 .crud-style-content {
   display: flex;
-  flex-direction: column; /* Updated to column */
+  flex-direction: column;
   padding: 20px;
   background-color: #f9f9f9;
   border-radius: 12px;
@@ -67,15 +67,15 @@
 }
 
 .crud-style-title {
-  font-size: 1.3rem; /* Increased font size */
+  font-size: 1.3rem;
   color: #333;
-  margin-bottom: 10px; /* Add margin bottom to separate title and description */
+  margin-bottom: 10px;
 }
 
 .crud-style-description {
-  font-size: 1.1rem; /* Increased font size */
+  font-size: 1.1rem;
   color: #555;
-  margin-bottom: 10px; /* Add margin bottom to separate title and description */
+  margin-bottom: 10px;
 }
 
 .crud-style-button-container {
@@ -85,11 +85,11 @@
 
 .crud-style-button {
   margin-left: 10px;
-  padding: 12px 24px; /* Increased padding */
+  padding: 12px 24px;
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  font-size: 1.1rem; /* Slightly larger font size */
+  font-size: 1.1rem;
   transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -107,11 +107,18 @@
   background-color: #ff0000;
 }
 
-/* Nouvelles classes pour les statuts */
+
 .ongoing-mission {
   color: #095dacc2;
 }
 
 .terminated-mission {
   color: #00000075;
+}
+
+.crud-style-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-top: 10px;
 }

@@ -24,3 +24,17 @@
   min-height: 100vh;
   padding: 20px;
 }
+
+
+.section-container h1 {
+  font-size: 3rem;
+  margin-top: 15%;
+  margin-bottom: 8%;
+  font-weight: normal;
+  /*font-family: 'Courier New', Courier, monospace;*/
+  /*font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;*/
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  letter-spacing: 0.5ch;
+  color: black;
+}
+

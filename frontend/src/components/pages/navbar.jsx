@@ -8,7 +8,7 @@ const Navbar = ({ togglePanel, toggleNavbar, isVisible }) => {
     return (
         <nav className={navbarClass}>
             <div className="logo navbar-item">
-                <a href="/">Your Brand</a>
+                <a href="/">Raphaël Mottelet</a>
             </div>
             <div className="home navbar-item">
                 <ToggleButton handleToggle={togglePanel}/>

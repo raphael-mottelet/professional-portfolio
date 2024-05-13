@@ -18,6 +18,8 @@ class ExperienceSerializer(serializers.ModelSerializer):
         model = Experience
         fields = ('id', 'date', 'imageSrc', 'title', 'location', 'description', 'status')
         extra_kwargs = {
+            'title': {'required': False},
+            'description': {'required': False},
             'imageSrc': {'required': False},
             'date': {'required': False},
             'status': {'required': False},
@@ -41,9 +43,12 @@ class EducationSerializer(serializers.ModelSerializer):
 class ProjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Project
-        fields = ('id', 'name', 'imageSrc', 'techs', 'github')
+        fields = ('id', 'name', 'imageSrc', 'techs', 'github', 'description')
         extra_kwargs = {
             'imageSrc': {'required': False},
+            'name': {'required': False},
+            'description': {'required': False},
+            'techs': {'required': False},
             'github': {'required': False},
         }
 
@@ -53,6 +58,8 @@ class SocialLinkSerializer(serializers.ModelSerializer):
         fields = ('id', 'iconSrc', 'name', 'link')
         extra_kwargs = {
             'iconSrc': {'required': False},
+            'name': {'required': False},
+            'link': {'required': False},
 
         }
 
