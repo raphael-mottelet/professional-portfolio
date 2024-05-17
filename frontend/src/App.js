@@ -6,6 +6,7 @@ import HomePage from './components/pages/homepage'
 import Education from './components/pages/Cards/EducationCard'
 import Experience from './components/pages/Cards/ExperienceCard'
 import Social from './components/pages/Cards/SocialLinksCard'
+import Agent from './components/pages/agent'
 import Project from './components/pages/Cards/ProjectCard'
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Route exact path="/" element={<HomePage/>} />
         <Route path="/login" element={<Login />} />
         <Route exact path="/crudhub" element={<CrudHub />} />
+        <Route path="/agent" element={<Agent/>} />
 
         <Route exact path="/admin" element={<Education />} />
 

@@ -1,9 +1,44 @@
+import sys
+sys.path.append('..')
+
 from django.shortcuts import render
+from rest_framework import viewsets
+
 
 from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView, UpdateAPIView, DestroyAPIView
+from rest_framework.response import Response
+from rest_framework.decorators import action
+from .GPT_agent.gpt_functions import generate_response
 
-from .models import Education, Experience, Project, SocialLink, Presentation
-from .serializers import ExperienceSerializer, EducationSerializer, SocialLinkSerializer, ProjectSerializer, PresentationSerializer
+
+from .models import Education, Experience, Project, SocialLink, Presentation, GPTConversation, User
+from .serializers import ExperienceSerializer, EducationSerializer, SocialLinkSerializer, ProjectSerializer, PresentationSerializer, GPTConversationSerializer, UserSerializer
+
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+class GPTConversationSerializer(viewsets.ModelViewSet):
+    queryset = GPTConversation.objects.all()
+    serializer_class = GPTConversationSerializer
+
+    @action(detail=False, methods=['post'])
+    def interact(self, request):
+        user_ip = request.META['REMOTE_ADDR']
+        user, created = User.objects.get_or_create(ip_address=user_ip)
+        input_text = request.data.get('input_text')
+        response_text = generate_response(input_text)
+        conversation = GPTConversation.objects.create(user=user, input_text=input_text, response_text=response_text)
+        return Response(GPTConversationSerializer(conversation).data)
+    
+    @action(detail=False, methods=['get'])
+    def user_conversations(self, request):
+        user_ip = request.META['REMOTE_ADDR']
+        user = User.objects.get(ip_address=user_ip)
+        conversations = GPTConversation.objects.filter(user=user).order_by('-timestamp')
+        serializer = GPTConversationSerializer(conversations, many=True)
+        return Response(serializer.data)
+    
 
 
 class ListPresentationView(ListAPIView):

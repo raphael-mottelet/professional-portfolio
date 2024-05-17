@@ -1,7 +1,18 @@
+import sys
+sys.path.append('..')
+
 from rest_framework import serializers
-from .models import Experience, Education, Project, SocialLink, Presentation
+from .models import Experience, Education, Project, SocialLink, Presentation, GPTConversation, User
 
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = '__all__'
 
+class GPTConversationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = GPTConversation
+        fields = '__all__'
 
 class PresentationSerializer(serializers.ModelSerializer):
     class Meta:

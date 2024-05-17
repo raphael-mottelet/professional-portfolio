@@ -9,6 +9,7 @@ import EducationCard from './Cards/EducationCard'; // Retained import
 import ProjectCard from './Cards/ProjectCard';
 import SocialCard from './Cards/SocialLinksCard';
 import Footer from './footer';
+import Agent from './agent';
 
 const sectionColors = {
   presentation: '#333333', // Dark gray

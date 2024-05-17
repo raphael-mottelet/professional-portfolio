@@ -1,6 +1,20 @@
 from django.db import models
-from django.db import models
 
+class User(models.Model):
+    ip_address = models.GenericIPAddressField()
+    name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
+
+class GPTConversation(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    input_text = models.TextField()
+    response_text = models.TextField()
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Message from {self.timestamp}"
 
 class Presentation(models.Model):
     image = models.ImageField(upload_to='presentation_images/')
@@ -9,7 +23,6 @@ class Presentation(models.Model):
 
     def __str__(self):
         return self.title
-    
 
 class Experience(models.Model):
     ONGOING = 'ongoing'
@@ -22,13 +35,12 @@ class Experience(models.Model):
     date = models.DateField()
     imageSrc = models.ImageField(upload_to='experience_images/', default='default_image.jpg')
     title = models.CharField(max_length=255)
-    location = models.CharField(max_length=100,default='')  # Define the location field
+    location = models.CharField(max_length=100, default='')  # Define the location field
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='ongoing')
     description = models.TextField()
 
     def __str__(self):
         return self.title
-
 
 class Education(models.Model):
     ONGOING = 'ongoing'
@@ -48,7 +60,7 @@ class Education(models.Model):
 
     def __str__(self):
         return self.title
-    
+
 class Project(models.Model):
     name = models.CharField(max_length=255)
     imageSrc = models.ImageField(upload_to='project_images/')
