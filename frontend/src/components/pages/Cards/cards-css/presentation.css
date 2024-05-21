@@ -9,16 +9,12 @@
 
 
 .presentation-card-title {
+  font-size: 3rem;
   margin-top: 410px;
-  margin-bottom: 100px;
-  width: 50%;
-  overflow: hidden;
-  color: white;
-  font-size: 50px;
-  font-family: monospace;
-  white-space: nowrap;
-  border-right: 4px solid orange;
-  animation: printed-text 3s steps(21), flashin-border .75s step-start infinite;
+  margin-bottom: 200px;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  letter-spacing: 0.5ch;
+  color: black;
 }
 
 .presentation-card-description-container {
@@ -27,7 +23,7 @@
 }
 
 .presentation-card-description {
-  color: white;
+  color: black;
   font-size: 25px;
   line-height: 2;
   font-family: Arial, sans-serif;
@@ -47,24 +43,4 @@
   height: auto;
   display: block;
   margin: 10px auto;
-}
-
-
-@keyframes flashin-border {
-  0% {
-    border-color: rgb(255, 255, 255);
-  }
-  50% {
-    border-color: transparent;
-  }
-  100% {
-    border-color: rgb(255, 255, 255);
-  }
-}
-
-
-@keyframes printed-text {
-  from {
-    width: 0%;
-  }
 }

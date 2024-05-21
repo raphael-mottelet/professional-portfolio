@@ -4,19 +4,18 @@ import LateralPanel from './lateral_panel';
 import './pages-style/homepage.css';
 
 import ExperienceCard from './Cards/ExperienceCard';
-import PresentationCard from './Cards/PresentationCard'; // Updated import
-import EducationCard from './Cards/EducationCard'; // Retained import
+import PresentationCard from './Cards/PresentationCard';
+import EducationCard from './Cards/EducationCard';
 import ProjectCard from './Cards/ProjectCard';
 import SocialCard from './Cards/SocialLinksCard';
 import Footer from './footer';
-import Agent from './agent';
 
 const sectionColors = {
-  presentation: '#333333', // Dark gray
-  experience: '#333333', // Same as presentation, consider differentiating if needed
-  education: '#00d49e', // Light green
-  projects: '#b8a9c9', // Lavender
-  social: '#ffcf5a'    // Light orange
+  presentation: '#ffcf5a',
+  experience: '#ffcf5a',
+  education: '#00d49e',
+  projects: '#b8a9c9',
+  social: '#ffcf5a'
 };
 
 function Homepage() {
@@ -26,7 +25,7 @@ function Homepage() {
   const [projects, setProjects] = useState([]);
   const [social, setSocial] = useState([]);
   const [presentation, setPresentation] = useState([]);
-  const [backgroundColor, setBackgroundColor] = useState(sectionColors['presentation']); // Corrected to use a valid key
+  const [backgroundColor, setBackgroundColor] = useState(sectionColors['presentation']);
   const [panelVisible, setPanelVisible] = useState(true);
 
   useEffect(() => {
@@ -62,19 +61,21 @@ function Homepage() {
   const handleScroll = () => {
     const sections = document.querySelectorAll('.section-container');
     sections.forEach((section, index) => {
-      const rect = section.getBoundingClientRect();
-      const cards = section.querySelectorAll('.card');
-      if (rect.top <= window.innerHeight && rect.bottom >= 0) {
-        setBackgroundColor(interpolateColors(sectionColors[section.id], sectionColors[sections[index + 1] ? sections[index + 1].id : section.id], Math.max(0, window.innerHeight - rect.top) / (rect.bottom - rect.top)));
-        cards.forEach(card => {
-          card.classList.remove('fade-out');
-          card.classList.add('fade-in');
-        });
-      } else {
-        cards.forEach(card => {
-          card.classList.remove('fade-in');
-          card.classList.add('fade-out');
-        });
+      if (section) {
+        const rect = section.getBoundingClientRect();
+        const cards = section.querySelectorAll('.card');
+        if (rect.top <= window.innerHeight && rect.bottom >= 0) {
+          setBackgroundColor(interpolateColors(sectionColors[section.id], sectionColors[sections[index + 1] ? sections[index + 1].id : section.id], Math.max(0, window.innerHeight - rect.top) / (rect.bottom - rect.top)));
+          cards.forEach(card => {
+            card.classList.remove('fade-out');
+            card.classList.add('fade-in');
+          });
+        } else {
+          cards.forEach(card => {
+            card.classList.remove('fade-in');
+            card.classList.add('fade-out');
+          });
+        }
       }
     });
   };
@@ -101,7 +102,7 @@ function Homepage() {
         <Section title="My projects" id="projects" data={projects} component={ProjectCard} />
         <Section title="Social media" id="social" data={social} component={SocialCard} />
       </div>
-      <Footer togglePanel={handleTogglePanel} isVisible={panelVisible}/>
+      <Footer togglePanel={handleTogglePanel} isVisible={panelVisible} />
     </div>
   );
 }

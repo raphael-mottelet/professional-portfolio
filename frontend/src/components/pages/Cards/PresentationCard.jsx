@@ -17,7 +17,7 @@ const PresentationCard = ({ data }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  console.log(data.image);  // Debugging line to check image URL
+  console.log(data.image);
 
   const lines = data.description.split('\n');
   return (

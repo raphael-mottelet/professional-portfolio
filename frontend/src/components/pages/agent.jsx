@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Navbar from './navbar';
 import LateralPanel from './lateral_panel';
-import './agent.css';
+import './pages-style/agent.css';
 
 const Agent = () => {
   const url = 'http://127.0.0.1:8000';
   const [userInput, setUserInput] = useState('');
   const [conversation, setConversation] = useState([]);
+  const [panelVisible, setPanelVisible] = useState(true);
 
   useEffect(() => {
     const fetchConversations = async () => {
@@ -49,26 +50,32 @@ const Agent = () => {
     }
   };
 
+  const handleTogglePanel = () => {
+    setPanelVisible(!panelVisible);
+  };
+
   return (
-    <div>
-      <Navbar />
-      <LateralPanel />
-      <div className="chat-container">
-        <div className="chat-box">
-          {conversation.map((msg, index) => (
-            <div key={index} className={`chat-message ${msg.role}`}>
-              {msg.content}
-            </div>
-          ))}
-        </div>
-        <div className="chat-input">
-          <input 
-            type="text" 
-            value={userInput} 
-            onChange={handleInputChange} 
-            placeholder="Type your message here..." 
-          />
-          <button onClick={handleSendMessage}>Send</button>
+    <div className='content-container-main'>
+      <div className={`content-container ${panelVisible ? 'visible' : 'invisible'}`}>
+        <Navbar togglePanel={handleTogglePanel} isVisible={panelVisible} />
+        <LateralPanel isVisible={panelVisible} />
+        <div className="chat-container">
+          <div className="chat-box">
+            {conversation.map((msg, index) => (
+              <div key={index} className={`chat-message ${msg.role}`}>
+                {msg.content}
+              </div>
+            ))}
+          </div>
+          <div className="chat-input">
+            <input 
+              type="text" 
+              value={userInput} 
+              onChange={handleInputChange} 
+              placeholder="Type your message here..." 
+            />
+            <button onClick={handleSendMessage}>Send</button>
+          </div>
         </div>
       </div>
     </div>

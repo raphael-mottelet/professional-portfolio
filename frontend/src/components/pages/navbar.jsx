@@ -1,17 +1,18 @@
-import React from 'react';
 import './pages-style/navbar.css';
 import ToggleButton from './buttons/toggle_button/toggleButton';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-const Navbar = ({ togglePanel, toggleNavbar, isVisible }) => {
-    const navbarClass = `navbar ${isVisible ? 'visible' : 'hiden'}`;
+const Navbar = ({ togglePanel, isVisible }) => {
+    const navbarClass = `navbar ${isVisible ? 'visible' : 'hidden'}`;
 
     return (
         <nav className={navbarClass}>
             <div className="logo navbar-item">
-                <a href="/">Raphaël Mottelet</a>
+                <a href="/">HOME</a>
             </div>
             <div className="home navbar-item">
-                <ToggleButton handleToggle={togglePanel}/>
+                <ToggleButton handleToggle={togglePanel} />
             </div>
             <div className="search navbar-item">
                 <input type="text" placeholder="Search..." />

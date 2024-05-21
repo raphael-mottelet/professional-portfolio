@@ -8,7 +8,7 @@ from context.agent_context import get_initial_context
 from context.keyword_manager import context_manager
 from django.conf import settings
 
-OpenAI.api_key = "sk-proj-gxS1dyTZ3MbeC1Vmew9nT3BlbkFJ9KtmDVXwTCwYKgrc5GmP"
+OpenAI.api_key = ""
 
 def load_chat_history(messages):
     try:

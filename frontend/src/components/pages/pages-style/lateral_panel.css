@@ -11,20 +11,26 @@
   font-family: 'Roboto', sans-serif;
 }
 
+.panel-item-container {
+  margin-top: 100px;
+}
+
 .panel-item {
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
   display: flex;
   align-items: center;
   padding: 10px;
-  margin-top: 20px;
-  margin-left: 20px;
+  margin-top: 30px;
+  margin-left: 15px;
   color: rgba(0, 0, 0, 0.6);
   border: none;
   background: none;
   text-align: left;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 18px;
   margin-bottom: 5px;
   transition: color 0.3s ease-in-out;
+  text-decoration: none;
 }
 
 .panel-item.active {
@@ -71,3 +77,6 @@
   transition: transform 0.5s ease 0.9s;
 }
 
+.lateral-panel a {
+  text-decoration: none; /* Retire la décoration de texte pour tous les liens dans le panneau latéral */
+}
