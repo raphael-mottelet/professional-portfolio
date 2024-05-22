@@ -47,11 +47,13 @@
   font-size: 16px;
 }
 
+
 .search input:focus {
   outline: none;
   border-color: #1b1b1b;
   box-shadow: 0 0 5px rgba(131, 131, 131, 0.5);
   background-color: white;
+  color: rgba(0, 0, 0, 0.541);
 }
 
 .search input::placeholder {

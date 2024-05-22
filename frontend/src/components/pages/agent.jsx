@@ -56,11 +56,18 @@ const Agent = () => {
 
   return (
     <div className='content-container-main'>
-      <div className={`content-container ${panelVisible ? 'visible' : 'invisible'}`}>
-        <Navbar togglePanel={handleTogglePanel} isVisible={panelVisible} />
-        <LateralPanel isVisible={panelVisible} />
+      <Navbar togglePanel={handleTogglePanel} isVisible={panelVisible} />
+      <LateralPanel isVisible={panelVisible} />
+      <div className={`content-container ${panelVisible ? 'panel-visible' : 'panel-hidden'}`}>
         <div className="chat-container">
           <div className="chat-box">
+            <div className="agent-title">Coming soon!</div>
+            <div className="agent-description">
+              Based on GPT 3.5 turbo model, this little agent will have to create a "virtual me", 
+              so you can ask questions about myself and my career at any time!
+              You can try the chat already, but it is working client side only.
+              A smaller project called "AI Agent" is available in my portfolio "Projects" section.
+            </div>
             {conversation.map((msg, index) => (
               <div key={index} className={`chat-message ${msg.role}`}>
                 {msg.content}

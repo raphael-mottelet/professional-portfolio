@@ -15,7 +15,7 @@ const Navbar = ({ togglePanel, isVisible }) => {
                 <ToggleButton handleToggle={togglePanel} />
             </div>
             <div className="search navbar-item">
-                <input type="text" placeholder="Search..." />
+                <input type="text" placeholder="coming soon..." />
             </div>
         </nav>
     );
