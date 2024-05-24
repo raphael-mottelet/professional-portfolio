@@ -23,6 +23,17 @@ const PresentationCard = ({ data }) => {
   return (
     <div className='presentation-card'>
       <p className="presentation-card-title">{data.title}</p>
+
+      <div className='personnal-presentation-container'>
+        <img src={data.image} className="presentation-card-image" alt="Presentation" />
+        <div className="personnal-presentation-paragraph">
+          <p className="personnal-presentation-text">{data.firstname}</p>
+          <p className="personnal-presentation-text">{data.name}</p>
+          <p className="personnal-presentation-text">{data.age}</p>
+          <p className="personnal-presentation-text-job">{data.job}</p>
+        </div>
+      </div>
+
       <div
         className={`presentation-card-description ${isVisible ? 'fade-in' : ''}`}
         ref={descriptionRef}
@@ -31,7 +42,6 @@ const PresentationCard = ({ data }) => {
           <p key={index} className="typing-animation">{line}</p>
         ))}
       </div>
-      <img src={data.image} className="presentation-card-image" alt="Presentation" />
     </div>
   );
 };

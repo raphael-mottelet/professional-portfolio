@@ -11,11 +11,11 @@ import SocialCard from './Cards/SocialLinksCard';
 import Footer from './footer';
 
 const sectionColors = {
-  presentation: '#ffcf5a',
-  experience: '#ffcf5a',
+  presentation: '#f6e58d',
+  experience: '#f6e58d',
   education: '#00d49e',
   projects: '#b8a9c9',
-  social: '#ffcf5a'
+  social: '#f6e58d'
 };
 
 function Homepage() {

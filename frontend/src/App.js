@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import CrudHub from './components/pages/crud-hub';
 import Login from './components/pages/login/userlogin'
 import HomePage from './components/pages/homepage'
 import Education from './components/pages/Cards/EducationCard'
@@ -15,7 +14,6 @@ function App() {
       <Routes>
         <Route exact path="/" element={<HomePage/>} />
         <Route path="/login" element={<Login />} />
-        <Route exact path="/crudhub" element={<CrudHub />} />
         <Route path="/agent" element={<Agent/>} />
 
         <Route exact path="/admin" element={<Education />} />

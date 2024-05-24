@@ -1,14 +1,15 @@
 import React from 'react';
-import './cards-css/card.css';
+import './cards-css/experience-card.css';
 
 const ExperienceCard = ({ data }) => (
   <div className='card'>
+        <p className="card-date">{data.date}</p>
     <p className="card-title">{data.title}</p>
+    <p className="card-status">{data.status}</p>
     <p className="card-description">{data.description}</p>
-    <p className="card-date">{data.date}</p> {/* Utilisez card-date pour la classe de date */}
-    <p className="card-location">{data.location}</p> {/* Utilisez card-location pour la classe de location */}
+    <p className="card-location">Lieux: {data.location}</p>
 
-    <img src={data.image} alt={data.title} className="card-image" /> {/* Assuming data contains an image field */}
+    <img src={data.imageSrc} alt={data.title} className="card-image" />
   </div>
 );
 

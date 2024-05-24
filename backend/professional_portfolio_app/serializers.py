@@ -2,26 +2,21 @@ import sys
 sys.path.append('..')
 
 from rest_framework import serializers
-from .models import Experience, Education, Project, SocialLink, Presentation, GPTConversation, User
-
-class UserSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = '__all__'
-
-class GPTConversationSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = GPTConversation
-        fields = '__all__'
+from .models import Experience, Education, Project, SocialLink, Presentation
 
 class PresentationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Presentation
-        fields = ('id','image', 'title','description')
+        fields = ('id','image', 'title','description', 'firstname', 'name', 'age', 'job')
         extra_kwargs = {
             'image': {'required': False},
             'title': {'required': False},
             'description': {'required': False},
+            'firstname': {'required': False},
+            'name': {'required': False},
+            'age': {'required': False},
+            'job': {'required': False},
+
         }
 
 class ExperienceSerializer(serializers.ModelSerializer):
@@ -66,7 +61,7 @@ class ProjectSerializer(serializers.ModelSerializer):
 class SocialLinkSerializer(serializers.ModelSerializer):
     class Meta:
         model = SocialLink
-        fields = ('id', 'iconSrc', 'name', 'link')
+        fields = ('id', 'iconSrc', 'name', 'link',)
         extra_kwargs = {
             'iconSrc': {'required': False},
             'name': {'required': False},

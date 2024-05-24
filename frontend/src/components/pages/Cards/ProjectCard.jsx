@@ -1,18 +1,23 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { IoLogInOutline } from 'react-icons/io5';
-import './cards-css/card.css'
+import { FaGithub } from 'react-icons/fa';
+import './cards-css/project-card.css';
 
 const ProjectCard = ({ data }) => (
-  <div className="card" whilehover={{ scale: 1.05 }}>
-    <p className="card-title">{data.name}</p>
-    <img src={data.imageSrc} className="card-image" alt="" />
-    <p className="card-description">{data.description}</p>
-    <p className="card-description-techs">{data.techs}</p>
-    <a href={data.github}>
-      <IoLogInOutline className="card-icon" />
-    </a>
-  </div>
+  <motion.div className="project-card" whileHover={{ scale: 1.05 }}>
+    <p className="project-card-title">{data.name}</p>
+    <p className="project-card-techs">{data.techs}</p>
+    <p className="project-card-description">{data.description}</p>
+    {data.imageSrc ? (
+      <a href={data.github} target="_blank" rel="noopener noreferrer">
+        <img src={data.imageSrc} className="project-card-image" alt={data.name} />
+      </a>
+    ) : (
+      <a href={data.github} target="_blank" rel="noopener noreferrer" className="project-card-link">
+        <FaGithub size={48} className="github-icon" />
+      </a>
+    )}
+  </motion.div>
 );
 
 export default ProjectCard;

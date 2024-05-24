@@ -1,7 +1,13 @@
 .social-card {
-  margin: 10px;
+  margin-top: -200px;
   display: flex;
   justify-content: center;
+}
+
+.social-card-name {
+  opacity: 0;
+  transition: opacity 0.5s ease, transform 0.4s ease; 
+  text-align: center;
 }
 
 .social-card.inline {
@@ -9,25 +15,34 @@
 }
 
 .social-card-content {
+  position: relative;
   display: flex;
+  flex-direction: column;
   align-items: center;
   text-decoration: none;
   color: #333;
-  padding: 10px;
+  padding: 30px;
   border-radius: 5px;
-  background-color: #fff;
+  overflow: hidden;
+  font-size: 17px;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  letter-spacing: 0.5ch;
+
 }
 
-.social-card-content:hover {
-  background-color: #f0f0f0;
+.social-card-content:hover .social-card-name {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s ease, transform 0.4s ease;
 }
 
 .social-card-content img {
-  width: 30px;
-  height: 30px;
-  margin-right: 10px;
+  width: calc(1em + 35px);
+  height: calc(1em + 35px);
+  margin-bottom: 5px;
 }
 
 .social-card-name {
   margin: 0;
+  transform: translateY(100%);
 }
