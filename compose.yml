@@ -5,7 +5,7 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile.django
-    command: gunicorn --bind 0.0.0.0:8000 professional_portfolio_app.wsgi:application
+    command: gunicorn --bind 0.0.0.0:8000 backend.wsgi:application
     volumes:
       - ./backend:/app
     ports:
@@ -39,11 +39,13 @@ services:
       retries: 3
 
   db:
-    image: postgres
+    image: postgres:13
     env_file:
       - .env
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
     networks:
       - backend
     restart: unless-stopped

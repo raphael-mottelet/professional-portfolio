@@ -86,8 +86,8 @@ DATABASES = {
         'NAME': 'portfoliodjango',
         'USER': 'postgres',
         'PASSWORD': 'aaaa',
-        'HOST': 'localhost',
-        'PORT': '5433',
+        'HOST': 'db',  # Utilisez le nom du service Docker pour PostgreSQL
+        'PORT': '5433',  # Le port PostgreSQL que vous avez spécifié
     }
 }
 
@@ -124,6 +124,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Ajoutez ceci pour définir le chemin où les fichiers statiques seront collectés
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 CORS_ORIGIN_ALLOW_ALL = True
 
