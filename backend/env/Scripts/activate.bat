@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\Raph\Desktop\GitHub\Personal Repo's\professional-portfolio\backend\env
+set VIRTUAL_ENV=C:\Users\Raph\Desktop\test\test3\professional-portfolio\backend\env
 
 if not defined PROMPT set PROMPT=$P$G
 

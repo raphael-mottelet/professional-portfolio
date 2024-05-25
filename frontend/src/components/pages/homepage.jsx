@@ -19,7 +19,7 @@ const sectionColors = {
 };
 
 function Homepage() {
-  const url = 'http://127.0.0.1:8000/';
+  const url = 'http://127.0.0.1:8000/' || 'http://localhost:8000/' ||  'http://0.0.0.0:8000/';
   const [experiences, setExperiences] = useState([]);
   const [education, setEducation] = useState([]);
   const [projects, setProjects] = useState([]);
