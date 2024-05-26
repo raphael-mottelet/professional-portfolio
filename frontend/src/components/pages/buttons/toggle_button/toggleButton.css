@@ -58,3 +58,36 @@
   visibility: visible;
   opacity: 1;
 }
+
+@media only screen and (max-width: 750px) {
+  .toggle-button {
+    margin-top: 1px;
+    position: relative;
+    width: 40px;
+    height: 18px;
+    background-color: #ffffff;
+    border-radius: 25px;
+    cursor: pointer;
+    border: 2px solid #0000006c;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.404);
+  
+  }
+  
+  .button {
+    position: absolute;
+    top: 50%;
+    left: 0px;
+    width: 20px;
+    height: 17px;
+    background-color: #ffffff;
+    border: 1px solid #000000af;
+    border-radius: 45%;
+    transform: translateY(-50%);
+    transition: left 0.3s ease;
+  }
+  
+  .on .button {
+    left: 18px;
+  }
+}

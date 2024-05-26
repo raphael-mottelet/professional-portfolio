@@ -65,10 +65,10 @@ const Timeline = ({ data = {} }) => {
           <div className="timeline-item-content">
             <p className="timeline-item-date">{data.date}</p>
             <h3 className="timeline-item-title">{data.title}</h3>
-            <p className="timeline-item-description">{data.level}</p>
-            <p className="timeline-item-description">{data.location}</p>
+            <p className="timeline-item-description-level">{data.level}</p>
+            <p className="timeline-item-description-location">{data.location}</p>
             <p className="timeline-item-description">{data.description}</p>
-            <p className="timeline-item-description">{data.status}</p>
+            <p className="timeline-item-description-status">{data.status}</p>
           </div>
         </div>
       </div>

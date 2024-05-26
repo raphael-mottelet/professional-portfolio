@@ -21,7 +21,7 @@
   align-items: center;
   text-decoration: none;
   color: #333;
-  padding: 30px;
+  padding: 28px;
   border-radius: 5px;
   overflow: hidden;
   font-size: 17px;
@@ -45,4 +45,50 @@
 .social-card-name {
   margin: 0;
   transform: translateY(100%);
+}
+
+@media only screen and (max-width: 1300px) {
+  .social-card {
+    margin-top: -100px;
+  }
+  
+  .social-card-content {
+    padding: 5px;
+    border-radius: 0px;
+    font-size: 15px;
+    letter-spacing: 0.5ch;
+  
+  }
+  .social-card-content img {
+    width: calc(1em + 30px);
+    height: calc(1em + 30px);
+    margin-bottom: 5px;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .social-card {
+    margin-top: 0px;
+    margin-bottom: 5px;
+  }
+  
+  .social-card-content {
+    padding: 5px;
+    border-radius: 0px;
+    font-size: 12px;
+    letter-spacing: 0.4ch;
+    padding: 3px;
+    margin-bottom: 0px;
+  }
+  
+  .social-card-content img {
+    width: calc(1em + 20px);
+    height: calc(1em + 20px);
+    margin-bottom: 10px;
+    padding: 10px;
+  }
+  
+  .social-card-name {
+    display: none;
+  }
 }

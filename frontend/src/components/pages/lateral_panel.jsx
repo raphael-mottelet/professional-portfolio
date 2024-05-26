@@ -16,6 +16,7 @@ const sectionIcons = {
 
 const LateralPanel = ({ isVisible, activeColor }) => {
   const [activeSection, setActiveSection] = useState('');
+  const [visibleText, setVisibleText] = useState(null);
   const location = useLocation();
 
   useEffect(() => {
@@ -39,10 +40,14 @@ const LateralPanel = ({ isVisible, activeColor }) => {
     }
   }, [location]);
 
+  const toggleTextVisibility = (index) => {
+    setVisibleText(visibleText === index ? null : index);
+  };
+
   return (
     <div className={`lateral-panel ${!isVisible ? 'hidden' : 'visible'}`}>
-      <div className='panel-item-container'>
-      {sections.map(section => (
+      <div className={`panel-item-container ${!isVisible ? 'hidden' : 'visible'}`}>
+      {sections.map((section, index) => (
         <Link key={section} to={`/${section === 'presentation' ? '' : `#${section}`}`}>
           <button
             className={`panel-item ${activeSection === section ? 'active' : ''}`}
@@ -52,22 +57,23 @@ const LateralPanel = ({ isVisible, activeColor }) => {
               } else {
                 document.getElementById(section).scrollIntoView({ behavior: 'smooth' });
               }
+              toggleTextVisibility(index);
             }}
           >
             <FontAwesomeIcon icon={sectionIcons[section]} className="icon" />
-            {section.charAt(0).toUpperCase() + section.slice(1)}
+            <span className={`text ${visibleText === index ? 'visible' : 'hidden'}`}>
+              {section.charAt(0).toUpperCase() + section.slice(1)}
+            </span>
             {activeSection === section && (
-              <span
-                className="dot"
-              ></span>
+              <span className="dot"></span>
             )}
           </button>
         </Link>
       ))}
       <Link to="/agent">
-        <button className="panel-item agent">
+        <button className="panel-item agent" onClick={() => toggleTextVisibility(sections.length)}>
           <FontAwesomeIcon icon={faRobot} className="icon" />
-          Agent
+          <span className={`text ${visibleText === sections.length ? 'visible' : 'hidden'}`}>Agent</span>
         </button>
       </Link>
       </div>

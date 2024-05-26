@@ -22,13 +22,12 @@
   padding: 10px;
   margin-top: 30px;
   margin-left: 15px;
-  color: rgba(0, 0, 0, 0.6);
+  color: rgba(0, 0, 0, 0.5);
   border: none;
   background: none;
   text-align: left;
   cursor: pointer;
   font-size: 18px;
-  margin-bottom: 5px;
   transition: color 0.3s ease-in-out;
   text-decoration: none;
 }
@@ -40,6 +39,7 @@
 
 .icon {
   margin-right: 10px;
+
 }
 
 .dot {
@@ -63,7 +63,7 @@
   }
 }
 
-.panel-item.active .dot {
+.panel-item.active.dot {
   opacity: 1;
 }
 
@@ -79,4 +79,120 @@
 
 .lateral-panel a {
   text-decoration: none; /* Retire la décoration de texte pour tous les liens dans le panneau latéral */
+}
+
+
+@media only screen and (max-width: 1300px) {
+  .lateral-panel {
+
+    width: 170px;
+  }
+}
+
+.panel-item {
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  margin-top: 20px;
+  margin-left: 6px;
+  font-size: 18px;
+  margin-bottom: 5px;
+
+}
+
+.icon {
+  margin-right: 7px;
+}
+
+.dot {
+  height: 10px;
+  width: 10px;
+  margin-top: 3px;
+  background-color: rgb(0, 0, 0);
+  border-radius: 50%;
+  margin-left: 10px;
+}
+
+@media only screen and (max-width: 750px) {
+
+  .panel-item-container {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    margin-left: 15px;
+    height: 320px;
+    width: 27px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(8px);
+    z-index: 500;
+    font-family: 'Roboto', sans-serif;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+  }
+
+  .dot {
+    height: 8px;
+    width: 8px;
+    margin-top: -9px;
+    background-color: rgb(0, 0, 0);
+    border-radius: 50%;
+    margin-left: -7px;
+  }
+
+  .panel-item.active .dot {
+    opacity: 1;
+  }
+
+  .panel-item-container.hidden {
+    transform: translateX(-100%);
+    transition: transform 0.5s ease;
+  }
+  
+  .panel-item-container.visible {
+    transform: translateX(0%);
+    transition: transform 0.5s ease 0.9s;
+  }
+
+  .panel-item-container a {
+    text-decoration: none;
+  }
+
+  .lateral-panel {
+    width: 0px;
+    background-color: transparent;
+    backdrop-filter: blur(0px);
+  }
+
+  .panel-item {
+    margin-top: 20px;
+    margin-left: -10px;
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  .icon {
+    margin-right: 10px;
+    margin-top: -10px;
+    color: rgba(0, 0, 0, 0.4);
+    font-size: 18px;
+  }
+
+  .panel-item.active .icon {
+    color: rgb(0, 0, 0);
+    font-weight: 500;
+  }
+
+  .text.hidden {
+    display: none;
+  }
+
+  .text.visible {
+    display: none;
+  }
+
+  .panel-item.agent {
+    margin-top: 40px;
+  }
 }

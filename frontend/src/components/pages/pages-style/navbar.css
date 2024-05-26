@@ -74,3 +74,50 @@
   height: 1px;
   background-color: transparent;
 }
+
+@media only screen and (max-width: 1300px) {
+  .navbar {
+    height: 13%;
+  }
+  .navbar.visible {
+    left: 191px;
+  }
+  .navbar-item {
+    margin-right: 20px;
+  }
+.logo a,
+.home a {
+  text-decoration: none;
+  color: black;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 19px;
+  }
+  
+}
+
+@media only screen and (max-width: 750px) {
+  .navbar {
+    height: 8%;
+    padding: 10px 30px;
+
+  }
+  .navbar.visible {
+    left: 0px;
+  }
+.logo a,
+.home a {
+  text-decoration: none;
+  color: black;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 17px;
+  }
+  .search input {
+    padding: 10px;
+    border: 1px solid #4b4a4a63;
+    border-radius: 20px;
+    width: 100px;
+    background-color: transparent;
+    transition: all 0.3s ease;
+    font-size: 16px;
+  }
+}
