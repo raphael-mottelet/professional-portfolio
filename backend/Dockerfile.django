@@ -1,15 +1,21 @@
+# Dockerfile.django
+
 FROM python:3.9
 
 WORKDIR /app
 
+# Installer les dépendances
 COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
-RUN pip install --no-cache-dir -r requirements.txt gunicorn
+# Installer netcat-openbsd pour le script wait-for-db.sh
+RUN apt-get update && apt-get install -y netcat-openbsd
 
+# Copier le code de l'application
 COPY . .
 
-ENV DJANGO_SETTINGS_MODULE=backend.settings
-
+# Exposer le port
 EXPOSE 8000
 
+# Commande pour démarrer l'application
 CMD ["gunicorn", "--bind", "0.0.0.0:8000", "backend.wsgi:application"]

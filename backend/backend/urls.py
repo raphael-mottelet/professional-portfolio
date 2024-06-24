@@ -1,5 +1,3 @@
-# Dans votre fichier urls.py
-
 import sys
 from django.conf import settings
 from django.conf.urls.static import static
@@ -9,7 +7,7 @@ from django.urls import include, path
 sys.path.append('..')
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('', admin.site.urls),
     
     path('get_presentation/', include('professional_portfolio_app.app_urls')),
     path('get_experience/', include('professional_portfolio_app.app_urls')),
