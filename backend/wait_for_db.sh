@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Ce script vérifie si la base de données est prête avant de continuer
+# wait_for_db.sh
 
 set -e
 
@@ -8,7 +8,7 @@ host="$1"
 shift
 cmd="$@"
 
-until nc -z "$host" 5432; do
+until nc -z -v -w30 $host 5432; do
   >&2 echo "Postgres is unavailable - sleeping"
   sleep 1
 done
