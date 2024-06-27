@@ -1753,10 +1753,10 @@
     redux-thunk "^3.1.0"
     reselect "^5.0.1"
 
-"@remix-run/router@1.16.1":
-  version "1.16.1"
-  resolved "https://registry.npmjs.org/@remix-run/router/-/router-1.16.1.tgz"
-  integrity sha512-es2g3dq6Nb07iFxGk5GuHN20RwBZOsuDQN7izWIisUcv9r+d2C5jQxqmgkdebXgReWfiyUabcki6Fg77mSNrig==
+"@remix-run/router@1.17.0":
+  version "1.17.0"
+  resolved "https://registry.npmjs.org/@remix-run/router/-/router-1.17.0.tgz"
+  integrity sha512-2D6XaHEVvkCn682XBnipbJjgZUU7xjLtA4dGJRBVUKpEaDYOZMENZoZjAOSb7qirxt5RupjzZxz4fK2FO+EFPw==
 
 "@rollup/plugin-babel@^5.2.0":
   version "5.3.1"
@@ -5495,10 +5495,10 @@ fraction.js@^4.3.7:
   resolved "https://registry.npmjs.org/fraction.js/-/fraction.js-4.3.7.tgz"
   integrity sha512-ZsDfxO51wGAXREY55a7la9LScWpwv9RxIrYABrlvOFBlH/ShPnrtsXeuUIfXKKOVicNxQ+o8JTbJvjS4M89yew==
 
-framer-motion@^11.2.6:
-  version "11.2.6"
-  resolved "https://registry.npmjs.org/framer-motion/-/framer-motion-11.2.6.tgz"
-  integrity sha512-XUrjjBt57e5YoHQtjwc3eNchFBuHvIgN/cS8SC4oIaAn2J/0+bLanUxXizidJKZVeHJam/JrmMnPRjYMglVn5g==
+framer-motion@^11.2.12:
+  version "11.2.12"
+  resolved "https://registry.npmjs.org/framer-motion/-/framer-motion-11.2.12.tgz"
+  integrity sha512-lCjkV4nA9rWOy2bhR4RZzkp2xpB++kFmUZ6D44V9VQaxk+JDmbDd5lq+u58DjJIIllE8AZEXp9OG/TyDN4FB/w==
   dependencies:
     tslib "^2.4.0"
 
@@ -8856,10 +8856,10 @@ react-error-overlay@^6.0.11:
   resolved "https://registry.npmjs.org/react-error-overlay/-/react-error-overlay-6.0.11.tgz"
   integrity sha512-/6UZ2qgEyH2aqzYZgQPxEnz33NJ2gNsnHA2o5+o4wW9bLM/JYQitNP9xPhsXwC08hMMovfGe/8retsdDsczPRg==
 
-react-icons@^5.0.1:
-  version "5.0.1"
-  resolved "https://registry.npmjs.org/react-icons/-/react-icons-5.0.1.tgz"
-  integrity sha512-WqLZJ4bLzlhmsvme6iFdgO8gfZP17rfjYEJ2m9RsZjZ+cc4k1hTzknEz63YS1MeT50kVzoa1Nz36f4BEx+Wigw==
+react-icons@^5.2.1:
+  version "5.2.1"
+  resolved "https://registry.npmjs.org/react-icons/-/react-icons-5.2.1.tgz"
+  integrity sha512-zdbW5GstTzXaVKvGSyTaBalt7HSfuK5ovrzlpyiWHAFXndXTdd/1hdDHI4xBM1Mn7YriT6aqESucFl9kEXzrdw==
 
 react-intersection-observer@^8.26.2:
   version "8.34.0"
@@ -8891,20 +8891,20 @@ react-refresh@^0.11.0, "react-refresh@>=0.10.0 <1.0.0":
   resolved "https://registry.npmjs.org/react-refresh/-/react-refresh-0.11.0.tgz"
   integrity sha512-F27qZr8uUqwhWZboondsPx8tnC3Ct3SxZA3V5WyEvujRyyNv0VYPhoBg1gZ8/MV5tubQp76Trw8lTv9hzRBa+A==
 
-react-router-dom@^6.23.1:
-  version "6.23.1"
-  resolved "https://registry.npmjs.org/react-router-dom/-/react-router-dom-6.23.1.tgz"
-  integrity sha512-utP+K+aSTtEdbWpC+4gxhdlPFwuEfDKq8ZrPFU65bbRJY+l706qjR7yaidBpo3MSeA/fzwbXWbKBI6ftOnP3OQ==
+react-router-dom@^6.24.0:
+  version "6.24.0"
+  resolved "https://registry.npmjs.org/react-router-dom/-/react-router-dom-6.24.0.tgz"
+  integrity sha512-960sKuau6/yEwS8e+NVEidYQb1hNjAYM327gjEyXlc6r3Skf2vtwuJ2l7lssdegD2YjoKG5l8MsVyeTDlVeY8g==
   dependencies:
-    "@remix-run/router" "1.16.1"
-    react-router "6.23.1"
+    "@remix-run/router" "1.17.0"
+    react-router "6.24.0"
 
-react-router@6.23.1:
-  version "6.23.1"
-  resolved "https://registry.npmjs.org/react-router/-/react-router-6.23.1.tgz"
-  integrity sha512-fzcOaRF69uvqbbM7OhvQyBTFDVrrGlsFdS3AL+1KfIBtGETibHzi3FkoTRyiDJnWNc2VxrfvR+657ROHjaNjqQ==
+react-router@6.24.0:
+  version "6.24.0"
+  resolved "https://registry.npmjs.org/react-router/-/react-router-6.24.0.tgz"
+  integrity sha512-sQrgJ5bXk7vbcC4BxQxeNa5UmboFm35we1AFK0VvQaz9g0LzxEIuLOhHIoZ8rnu9BO21ishGeL9no1WB76W/eg==
   dependencies:
-    "@remix-run/router" "1.16.1"
+    "@remix-run/router" "1.17.0"
 
 react-scripts@^5.0.1:
   version "5.0.1"
