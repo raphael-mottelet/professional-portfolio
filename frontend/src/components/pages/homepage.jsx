@@ -19,7 +19,7 @@ const sectionColors = {
 };
 
 function Homepage() {
-  const url = 'http://127.0.0.1:8000/' || 'http://localhost:8000/' ||  'http://0.0.0.0:8000/';
+  const url = 'http://127.0.0.1:8000/' || 'http://localhost:8000/' || 'http://0.0.0.0:8000/';
   const [experiences, setExperiences] = useState([]);
   const [education, setEducation] = useState([]);
   const [projects, setProjects] = useState([]);
@@ -44,6 +44,10 @@ function Homepage() {
       const projectsResponse = await fetch(url + 'get_projects/projects/list');
       const socialResponse = await fetch(url + 'get_social-links/social-links/list');
 
+      if (!presentationResponse.ok || !experienceResponse.ok || !educationResponse.ok || !projectsResponse.ok || !socialResponse.ok) {
+        throw new Error('Error fetching data');
+      }
+
       setPresentation(await presentationResponse.json() || []);
       setExperiences(await experienceResponse.json() || []);
       setEducation(await educationResponse.json() || []);
@@ -51,6 +55,7 @@ function Homepage() {
       setSocial(await socialResponse.json() || []);
     } catch (error) {
       console.error('Error fetching data:', error);
+      setPresentation([]);
       setExperiences([]);
       setEducation([]);
       setProjects([]);
