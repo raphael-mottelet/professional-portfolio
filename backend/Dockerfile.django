@@ -8,17 +8,14 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Installer netcat-openbsd pour le script wait-for-db.sh
-RUN apt-get update && apt-get install -y netcat-openbsd
-
 # Copier le code de l'application
 COPY . .
 
-# Copier le script wait_for_db.sh
-COPY wait_for_db.sh .
+# Collecter les fichiers statiques
+RUN python manage.py collectstatic --noinput
 
 # Exposer le port
 EXPOSE 8000
 
 # Commande pour démarrer l'application
-CMD ["sh", "./wait_for_db.sh", "db", "gunicorn", "--bind", "0.0.0.0:8000", "backend.wsgi:application"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "backend.wsgi:application"]
