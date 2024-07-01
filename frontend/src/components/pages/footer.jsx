@@ -6,7 +6,7 @@ const Footer = ({ isVisible }) => {
 
   return (
     <footer className={className}>
-      <p>© 2024 GreenLizard-IT. All rights reserved.</p>
+      <p>© 2024 Raphaël-Mottelet. All rights reserved.</p>
     </footer>
   );
 }

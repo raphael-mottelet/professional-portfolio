@@ -11,10 +11,10 @@ import SocialCard from './Cards/SocialLinksCard';
 import Footer from './footer';
 
 const sectionColors = {
-  presentation: '#f6e58d',
-  experience: '#f6e58d',
-  education: '#00d49e',
-  projects: '#b8a9c9',
+  presentation: '#80c77a',
+  experience: '#80c77a',
+  formation: '#00d49e',
+  projets: '#b8a9c9',
   social: '#f6e58d'
 };
 
@@ -102,10 +102,10 @@ function Homepage() {
       <LateralPanel isVisible={panelVisible} />
       <div className={`content-container ${panelVisible ? '' : 'shift-left'}`}>
         <Section title='' id="presentation" data={presentation} component={PresentationCard} />
-        <Section title="My experience" id="experience" data={experiences} component={ExperienceCard} />
-        <Section title="Education" id="education" data={education} component={EducationCard} />
-        <Section title="My projects" id="projects" data={projects} component={ProjectCard} />
-        <Section title="Social media" id="social" data={social} component={SocialCard} />
+        <Section title="Mon expérience" id="experience" data={experiences} component={ExperienceCard} />
+        <Section title="Formation" id="formation" data={education} component={EducationCard} />
+        <Section title="Mes projets" id="projets" data={projects} component={ProjectCard} />
+        <Section title="Réseaux sociaux" id="social" data={social} component={SocialCard} />
       </div>
       <Footer togglePanel={handleTogglePanel} isVisible={panelVisible} />
     </div>

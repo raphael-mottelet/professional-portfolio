@@ -35,12 +35,12 @@ const Agent = () => {
       <div className={`content-container ${panelVisible ? 'panel-visible' : 'panel-hidden'}`}>
         <div className="chat-container">
           <div className="chat-box">
-            <div className="agent-title">Coming soon!</div>
+            <div className="agent-title">Bientôt disponible !</div>
             <div className="agent-description">
-              Based on GPT 3.5 turbo model, this little agent will have to create a "virtual me", 
-              so you can ask questions about myself and my career at any time!
-              You can try the chat already, but it is working client side only.
-              A smaller project called "AI Agent" is available in my portfolio "Projects" section.
+              Basé sur un modèle d'ia générative léger, et "open source" via le site "hugging face",
+              ce petit agent IA aura pour rôle d'émuler ma personne pour que vous puissiez poser toutes les questions que vous souhaitez,
+              à n'importe quel moment de la journée ! Il disposera d'un contexte strict, de manière à de pas sortir de son rôle. Vous pouvez dès maintenant tester 
+              le chat, mais il n'est utilisable que coté client et est non persistent.
             </div>
             {conversation && conversation.map((msg, index) => (
               <div key={index} className={`chat-message ${msg.role}`}>
@@ -53,9 +53,9 @@ const Agent = () => {
               type="text" 
               value={userInput} 
               onChange={handleInputChange} 
-              placeholder="Type your message here..." 
+              placeholder="Tapez votre message..." 
             />
-            <button onClick={handleSendMessage}>Send</button>
+            <button onClick={handleSendMessage}>Envoyer</button>
           </div>
         </div>
       </div>

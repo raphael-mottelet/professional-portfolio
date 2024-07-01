@@ -1,6 +1,8 @@
 import os
 from pathlib import Path
 
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -13,11 +15,13 @@ SECRET_KEY = 'django-insecure-$dz__s@u(2hwm7^jwuc=%lp_%saa=46#q2$b19jck2l)f=rz^y
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']  # Change this as needed
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'admin.mottelet.dev']  # Change this as needed
 
 # Application definition
 
 INSTALLED_APPS = [
+    "admin_interface",
+    "colorfield",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -77,6 +81,13 @@ DATABASES = {
         'PORT': '5432',
     }
 }
+
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#    }
+#}
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
@@ -111,7 +122,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'  # Added WhiteNoise static files storage
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Media files
 MEDIA_URL = '/media/'
@@ -119,11 +130,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # CORS settings
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",  # Ensure this URL matches your React app's URL
+    "http://localhost:3000",
 ]
 
-# Ensure that only specified origins can access the API
+# specified origins can access the API
 CORS_ALLOW_ALL_ORIGINS = False
 
-# If you need to allow credentials (cookies, authorization headers, etc.)
+# cookies, authorization headers, etc.
 CORS_ALLOW_CREDENTIALS = True

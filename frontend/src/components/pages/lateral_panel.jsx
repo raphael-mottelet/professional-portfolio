@@ -4,13 +4,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSchool, faBriefcase, faProjectDiagram, faUsers, faBook, faRobot } from '@fortawesome/free-solid-svg-icons';
 import { Link, useLocation } from 'react-router-dom';
 
-const sections = ['presentation', 'experience', 'education', 'projects', 'social'];
+const sections = ['presentation', 'experience', 'formation', 'projets', 'social'];
 
 const sectionIcons = {
   presentation: faBook,
   experience: faBriefcase,
-  education: faSchool,
-  projects: faProjectDiagram,
+  formation: faSchool,
+  projets: faProjectDiagram,
   social: faUsers,
 };
 

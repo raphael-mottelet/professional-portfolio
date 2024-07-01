@@ -25,6 +25,8 @@
   border-left: 1px solid black;
   padding: 1em;
   margin-bottom: 15px;
+  height: 80%;
+  margin-top: 1em;
 }
 
 .presentation-card-description {
@@ -44,12 +46,12 @@
 }
 
 .presentation-card-image {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
+  width: 270px;
+  height: 270px;
+  border-radius: 30%;
   object-fit: cover;
   margin-right: 30px;
-  border-radius: 50%;
+  border-radius: 30%;
 }
 
 .personnal-presentation-text {
@@ -84,8 +86,8 @@
     margin-bottom: 15px;
   }
   .presentation-card-image {
-    width: 150px;
-    height: 150px;
+    width: 220px;
+    height: 220px;
   }
   
   .presentation-card-description {
@@ -119,8 +121,8 @@
     margin-bottom: 15px;
   }
   .presentation-card-image {
-    width: 60px;
-    height: 60px;
+    width: 100px;
+    height: 100px;
   }
   
   .presentation-card-description {

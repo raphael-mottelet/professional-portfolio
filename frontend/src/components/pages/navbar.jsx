@@ -9,13 +9,13 @@ const Navbar = ({ togglePanel, isVisible }) => {
     return (
         <nav className={navbarClass}>
             <div className="logo navbar-item">
-                <a href="/">HOME</a>
+                <a href="/">Accueil</a>
             </div>
             <div className="home navbar-item">
                 <ToggleButton handleToggle={togglePanel} />
             </div>
             <div className="search navbar-item">
-                <input type="text" placeholder="coming soon..." />
+                <input type="text" placeholder="Bientôt opérationnel..." />
             </div>
         </nav>
     );

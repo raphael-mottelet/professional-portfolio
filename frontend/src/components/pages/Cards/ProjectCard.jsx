@@ -8,6 +8,7 @@ const ProjectCard = ({ data }) => (
     <p className="project-card-title">{data.name}</p>
     <p className="project-card-techs">{data.techs}</p>
     <p className="project-card-description">{data.description}</p>
+    <div className="hover-message">cliquezmoi</div>
     {data.imageSrc ? (
       <a href={data.github} target="_blank" rel="noopener noreferrer">
         <img src={data.imageSrc} className="project-card-image" alt={data.name} />
