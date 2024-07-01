@@ -1,0 +1,10 @@
+# Dockerfile.nginx
+
+# Utilisation de l'image Nginx officielle en tant que base
+FROM nginx:latest
+
+# Suppression du fichier de configuration par défaut d'Nginx
+RUN rm /etc/nginx/conf.d/default.conf
+
+# Copie de votre fichier de configuration Nginx personnalisé
+COPY default.conf /etc/nginx/conf.d/

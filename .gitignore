@@ -1,0 +1,23 @@
+# Fichiers générés par l'environnement de développement
+*.pyc
+__pycache__/
+
+# Fichiers générés par l'IDE (comme PyCharm)
+*.idea/
+*.iml
+
+# Fichiers de build générés
+/build/
+/dist/
+*.egg-info/
+
+# Fichiers de logs et fichiers temporaires
+*.log
+*.tmp
+
+# Fichiers de configuration
+.DS_Store
+*.sqlite3
+
+# Environnement virtuel (si utilisé)
+venv/
