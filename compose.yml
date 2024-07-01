@@ -39,6 +39,8 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile.react
+    volumes:
+      - ./frontend/build:/app/build
     ports:
       - "3000:3000"
     networks:
@@ -61,6 +63,7 @@ services:
       - ./backend/staticfiles:/app/staticfiles
       - ./backend/media:/app/media
       - /etc/letsencrypt:/etc/letsencrypt  # Montage des certificats Let's Encrypt
+      - ./frontend/build:/usr/share/nginx/html  # Montage du répertoire de build de React
     networks:
       - backend
       - frontend
