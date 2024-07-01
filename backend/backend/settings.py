@@ -1,8 +1,6 @@
 import os
 from pathlib import Path
 
-
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -15,9 +13,10 @@ SECRET_KEY = 'django-insecure-$dz__s@u(2hwm7^jwuc=%lp_%saa=46#q2$b19jck2l)f=rz^y
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'admin.mottelet.dev']  # Change this as needed
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'admin.mottelet.dev', 'mottelet.dev', 'www.mottelet.dev']
 
 # Application definition
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 INSTALLED_APPS = [
     "admin_interface",
@@ -28,7 +27,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'corsheaders',  # Added CORS headers
+    'corsheaders',
 
     'rest_framework',
     'professional_portfolio_app',
@@ -82,12 +81,6 @@ DATABASES = {
     }
 }
 
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#    }
-#}
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
@@ -133,8 +126,12 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
 ]
 
-# specified origins can access the API
 CORS_ALLOW_ALL_ORIGINS = False
-
-# cookies, authorization headers, etc.
 CORS_ALLOW_CREDENTIALS = True
+
+# CSRF settings
+CSRF_TRUSTED_ORIGINS = [
+    'https://admin.mottelet.dev',
+    'https://mottelet.dev',
+    'https://www.mottelet.dev'
+]
