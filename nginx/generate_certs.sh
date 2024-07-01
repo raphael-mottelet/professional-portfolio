@@ -6,6 +6,9 @@ if ! [ -x "$(command -v certbot)" ]; then
   exit 1
 fi
 
+# Arrêter NGINX pour libérer le port 80 (si nécessaire)
+sudo systemctl stop nginx
+
 # Obtenez les certificats Let's Encrypt
 sudo certbot certonly --standalone --non-interactive --agree-tos --email raphael.mottelet.pro@protonmail.com -d mottelet.dev -d www.mottelet.dev -d admin.mottelet.dev
 
@@ -21,6 +24,9 @@ sudo cp /etc/letsencrypt/live/www.mottelet.dev/privkey.pem ./nginx/letsencrypt/l
 sudo mkdir -p ./nginx/letsencrypt/live/admin.mottelet.dev
 sudo cp /etc/letsencrypt/live/admin.mottelet.dev/fullchain.pem ./nginx/letsencrypt/live/admin.mottelet.dev/
 sudo cp /etc/letsencrypt/live/admin.mottelet.dev/privkey.pem ./nginx/letsencrypt/live/admin.mottelet.dev/
+
+# Redémarrer NGINX (si nécessaire)
+sudo systemctl start nginx
 
 # Ajouter une tâche cron pour renouveler les certificats automatiquement
 echo "0 0,12 * * * root certbot renew --quiet" | sudo tee /etc/cron.d/certbot
