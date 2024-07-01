@@ -18,7 +18,7 @@ services:
       - ./backend:/app
       - ./backend/staticfiles:/app/staticfiles
       - ./backend/media:/app/media
-      - ./nginx/letsencrypt:/etc/letsencrypt  # Montage des certificats Let's Encrypt
+      - /etc/letsencrypt:/etc/letsencrypt  # Montage des certificats Let's Encrypt
     ports:
       - "8000:8000"
     depends_on:
@@ -60,7 +60,7 @@ services:
     volumes:
       - ./backend/staticfiles:/app/staticfiles
       - ./backend/media:/app/media
-      - ./nginx/letsencrypt:/etc/letsencrypt  # Montage des certificats Let's Encrypt
+      - /etc/letsencrypt:/etc/letsencrypt  # Montage des certificats Let's Encrypt
     networks:
       - backend
       - frontend
