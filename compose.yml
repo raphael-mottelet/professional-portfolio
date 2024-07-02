@@ -40,8 +40,6 @@ services:
       dockerfile: Dockerfile.react
     volumes:
       - ./frontend/build:/usr/share/nginx/html
-    ports:
-      - "3000:3000"
     networks:
       - app_network
     restart: unless-stopped
