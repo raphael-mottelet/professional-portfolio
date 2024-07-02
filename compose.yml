@@ -18,7 +18,7 @@ services:
       - ./backend:/app
       - ./backend/staticfiles:/app/staticfiles
       - ./backend/media:/app/media
-      - /etc/letsencrypt:/etc/letsencrypt  # Montage des certificats Let's Encrypt
+      - /etc/letsencrypt:/etc/letsencrypt
     ports:
       - "8000:8000"
     depends_on:
@@ -26,7 +26,8 @@ services:
     env_file:
       - ./.env
     networks:
-      - app_network
+      - backend
+      - frontend
     restart: unless-stopped
     healthcheck:
       test: ["CMD-SHELL", "curl --fail http://localhost:8000 || exit 1"]
@@ -39,9 +40,11 @@ services:
       context: ./frontend
       dockerfile: Dockerfile.react
     volumes:
-      - ./frontend/build:/usr/share/nginx/html
+      - ./frontend/build:/app/build
+    ports:
+      - "3000:3000"
     networks:
-      - app_network
+      - frontend
     restart: unless-stopped
     healthcheck:
       test: ["CMD-SHELL", "curl --fail http://localhost:3000 || exit 1"]
@@ -59,10 +62,11 @@ services:
     volumes:
       - ./backend/staticfiles:/app/staticfiles
       - ./backend/media:/app/media
-      - /etc/letsencrypt:/etc/letsencrypt  # Montage des certificats Let's Encrypt
-      - ./frontend/build:/usr/share/nginx/html  # Montage du répertoire de build de React
+      - /etc/letsencrypt:/etc/letsencrypt
+      - ./frontend/build:/usr/share/nginx/html
     networks:
-      - app_network
+      - backend
+      - frontend
     depends_on:
       - django
       - react
@@ -77,7 +81,7 @@ services:
     ports:
       - "5433:5432"
     networks:
-      - app_network
+      - backend
     restart: unless-stopped
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U $POSTGRES_USER"]
@@ -89,5 +93,5 @@ volumes:
   postgres_data:
 
 networks:
-  app_network:
-    driver: bridge
+  backend:
+  frontend:
