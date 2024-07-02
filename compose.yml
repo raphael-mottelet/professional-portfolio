@@ -26,8 +26,7 @@ services:
     env_file:
       - ./.env
     networks:
-      - backend
-      - frontend
+      - app_network
     restart: unless-stopped
     healthcheck:
       test: ["CMD-SHELL", "curl --fail http://localhost:8000 || exit 1"]
@@ -40,11 +39,11 @@ services:
       context: ./frontend
       dockerfile: Dockerfile.react
     volumes:
-      - ./frontend/build:/app/build
+      - ./frontend/build:/usr/share/nginx/html
     ports:
       - "3000:3000"
     networks:
-      - frontend
+      - app_network
     restart: unless-stopped
     healthcheck:
       test: ["CMD-SHELL", "curl --fail http://localhost:3000 || exit 1"]
@@ -65,8 +64,7 @@ services:
       - /etc/letsencrypt:/etc/letsencrypt  # Montage des certificats Let's Encrypt
       - ./frontend/build:/usr/share/nginx/html  # Montage du répertoire de build de React
     networks:
-      - backend
-      - frontend
+      - app_network
     depends_on:
       - django
       - react
@@ -81,7 +79,7 @@ services:
     ports:
       - "5433:5432"
     networks:
-      - backend
+      - app_network
     restart: unless-stopped
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U $POSTGRES_USER"]
@@ -93,5 +91,5 @@ volumes:
   postgres_data:
 
 networks:
-  backend:
-  frontend:
+  app_network:
+    driver: bridge
