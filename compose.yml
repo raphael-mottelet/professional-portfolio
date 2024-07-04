@@ -18,7 +18,6 @@ services:
       - ./backend:/app
       - ./backend/staticfiles:/app/staticfiles
       - ./backend/media:/app/media
-      - /etc/letsencrypt:/etc/letsencrypt
     ports:
       - "8000:8000"
     depends_on:
@@ -39,38 +38,16 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile.react
-    volumes:
-      - ./frontend/build:/usr/share/nginx/html
     ports:
-      - "3000:80"
+      - "3000:3000"
     networks:
       - frontend
     restart: unless-stopped
     healthcheck:
-      test: ["CMD-SHELL", "curl --fail http://localhost:80 || exit 1"]
+      test: ["CMD-SHELL", "curl --fail http://localhost:3000 || exit 1"]
       interval: 1m30s
       timeout: 10s
       retries: 3
-
-  nginx:
-    build:
-      context: ./nginx
-      dockerfile: Dockerfile.nginx
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - ./backend/staticfiles:/app/staticfiles
-      - ./backend/media:/app/media
-      - /etc/letsencrypt:/etc/letsencrypt
-      - ./frontend/build:/usr/share/nginx/html
-    networks:
-      - backend
-      - frontend
-    depends_on:
-      - django
-      - react
-    restart: unless-stopped
 
   db:
     image: postgres:16
