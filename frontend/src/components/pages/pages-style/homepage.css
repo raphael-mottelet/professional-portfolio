@@ -81,4 +81,13 @@
     margin-top: 0px;
     min-height: 100vh;
   }
+  .section-container h1 {
+    margin-bottom: 8%;
+    font-weight: normal;
+    /*font-family: 'Courier New', Courier, monospace;*/
+    /*font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;*/
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    letter-spacing: 0.5ch;
+    color: black;
+  }
 }

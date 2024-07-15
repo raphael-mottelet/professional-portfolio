@@ -83,3 +83,63 @@
 .content-container.panel-hidden .chat-container {
   margin-left: 0;
 }
+
+@media only screen and (max-width: 1300px) {
+  .chat-container {
+    margin-top: 10%;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .chat-container {
+    margin-top: 20%;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .chat-container {
+    width: 80vw;
+    max-width: 100%;
+  }
+
+  .content-container.panel-visible .chat-container {
+    margin-left: 43px;
+  }
+
+  .agent-description {
+    font-size: 14px;
+    padding: 0.5em;
+    color: #666;
+    margin-bottom: 15px;
+    font-weight: lighter;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.349);
+  }
+
+  .chat-input {
+    flex-direction: column;
+  }
+
+  .chat-input input {
+    margin-bottom: 0px;
+    margin-right: 50%;
+  }
+
+  .chat-input button {
+    height: 7%;
+    margin-right: 75%;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+
+
+  .chat-input input {
+    margin-bottom: 0px;
+    margin-right: 30%;
+  }
+
+  .chat-input button {
+    height: 7%;
+    margin-right: 65%;
+  }
+}

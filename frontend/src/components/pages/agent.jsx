@@ -37,10 +37,10 @@ const Agent = () => {
           <div className="chat-box">
             <div className="agent-title">Bientôt disponible !</div>
             <div className="agent-description">
-              Basé sur un modèle d'ia générative léger, et "open source" via le site "hugging face",
-              ce petit agent IA aura pour rôle d'émuler ma personne pour que vous puissiez poser toutes les questions que vous souhaitez,
-              à n'importe quel moment de la journée ! Il disposera d'un contexte strict, de manière à de pas sortir de son rôle. Vous pouvez dès maintenant tester 
-              le chat, mais il n'est utilisable que coté client et est non persistent.
+              Basé sur un modèle d'ia générative léger,
+              ce petit agent IA aura pour rôle d'émuler ma personne pour que vous puissiez poser les questions que vous souhaitez,
+              à n'importe quel moment. Il disposera d'un contexte strict, de manière à de pas sortir de son rôle. Vous pouvez dès maintenant tester 
+              le chat, mais il n'est utilisable que coté client.
             </div>
             {conversation && conversation.map((msg, index) => (
               <div key={index} className={`chat-message ${msg.role}`}>

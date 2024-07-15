@@ -115,9 +115,9 @@
     padding: 10px;
     border: 1px solid #4b4a4a63;
     border-radius: 20px;
-    width: 100px;
+    width: 100%;
     background-color: transparent;
     transition: all 0.3s ease;
-    font-size: 16px;
+    font-size: 14px;
   }
 }
