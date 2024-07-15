@@ -13,7 +13,7 @@ SECRET_KEY = 'django-insecure-$dz__s@u(2hwm7^jwuc=%lp_%saa=46#q2$b19jck2l)f=rz^y
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'admin.mottelet.dev', 'mottelet.dev', 'www.mottelet.dev']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'admin.mottelet.dev', 'mottelet.dev', 'www.mottelet.dev', '141.94.223.89', 'http://localhost:3000/', 'https://localhost:3000/']
 
 # Application definition
 X_FRAME_OPTIONS = 'SAMEORIGIN'
