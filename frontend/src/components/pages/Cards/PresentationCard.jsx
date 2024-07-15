@@ -17,7 +17,10 @@ const PresentationCard = ({ data }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  console.log(data.image);
+  let imageUrl = data.image;
+  if (imageUrl.startsWith('http://')) {
+    imageUrl = imageUrl.replace('http://', 'https://');
+  }
 
   const lines = data.description.split('\n');
   return (
@@ -25,7 +28,7 @@ const PresentationCard = ({ data }) => {
       <p className="presentation-card-title">{data.title}</p>
 
       <div className='personnal-presentation-container'>
-        <img src={data.image} className="presentation-card-image" alt="Presentation" />
+        <img src={imageUrl} className="presentation-card-image" alt="Presentation" />
         <div className="personnal-presentation-paragraph">
           <p className="personnal-presentation-text">{data.firstname}</p>
           <p className="personnal-presentation-text">{data.name}</p>

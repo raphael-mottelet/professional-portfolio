@@ -19,7 +19,7 @@ const sectionColors = {
 };
 
 function Homepage() {
-  const url = 'http://127.0.0.1:8000/' || 'http://localhost:8000/' || 'http://0.0.0.0:8000/';
+  const apiUrl = process.env.REACT_APP_API_URL
   const [experiences, setExperiences] = useState([]);
   const [education, setEducation] = useState([]);
   const [projects, setProjects] = useState([]);
@@ -38,11 +38,11 @@ function Homepage() {
 
   const fetchData = async () => {
     try {
-      const presentationResponse = await fetch(url + 'get_presentation/presentation/list');
-      const experienceResponse = await fetch(url + 'get_experience/experience/list');
-      const educationResponse = await fetch(url + 'get_education/education/list');
-      const projectsResponse = await fetch(url + 'get_projects/projects/list');
-      const socialResponse = await fetch(url + 'get_social-links/social-links/list');
+      const presentationResponse = await fetch(`${apiUrl}/get_presentation/presentation/list`, { redirect: 'follow' });
+      const experienceResponse = await fetch(`${apiUrl}/get_experience/experience/list`, { redirect: 'follow' });
+      const educationResponse = await fetch(`${apiUrl}/get_education/education/list`, { redirect: 'follow' });
+      const projectsResponse = await fetch(`${apiUrl}/get_projects/projects/list`, { redirect: 'follow' });
+      const socialResponse = await fetch(`${apiUrl}/get_social-links/social-links/list`, { redirect: 'follow' });
 
       if (!presentationResponse.ok || !experienceResponse.ok || !educationResponse.ok || !projectsResponse.ok || !socialResponse.ok) {
         throw new Error('Error fetching data');
@@ -62,6 +62,7 @@ function Homepage() {
       setSocial([]);
     }
   };
+
 
   const handleScroll = () => {
     const sections = document.querySelectorAll('.section-container');

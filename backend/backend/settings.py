@@ -125,8 +125,20 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "https://mottelet.dev",
+    "http://mottelet.dev",
     "https://www.mottelet.dev",
+    "http://www.mottelet.dev",
     "https://admin.mottelet.dev",
+    "http://admin.mottelet.dev",
+    "https://admin.mottelet.dev:8000",
+    "http://admin.mottelet.dev:8000",
+]
+
+CORS_ALLOW_HEADERS = [
+    'authorization',
+    'content-type',
+    'x-csrftoken',
+    'x-requested-with',
 ]
 
 CORS_ALLOW_ALL_ORIGINS = False
@@ -137,6 +149,7 @@ CSRF_TRUSTED_ORIGINS = [
     'https://localhost:3000',
     'http://localhost:3000', 
     'https://admin.mottelet.dev',
+    'http://admin.mottelet.dev',
     'https://mottelet.dev',
     'https://www.mottelet.dev'
 ]
