@@ -20,7 +20,7 @@ class Experience(models.Model):
         (ONGOING, 'Ongoing'),
         (TERMINATED, 'Terminated'),
     ]
-    date = models.CharField(max_length=50)
+    date = models.DateField()
     imageSrc = models.ImageField(upload_to='experience_images/', default='default_image.jpg')
     title = models.CharField(max_length=255)
     location = models.CharField(max_length=100, default='')

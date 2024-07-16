@@ -39,7 +39,7 @@ const Agent = () => {
             <div className="agent-description">
               Basé sur un modèle d'ia générative léger,
               ce petit agent IA aura pour rôle d'émuler ma personne pour que vous puissiez poser les questions que vous souhaitez,
-              à n'importe quel moment. Il disposera d'un contexte strict, de manière à de pas sortir de son rôle. Vous pouvez dès maintenant tester 
+              à n'importe quel moment. Il disposera d'un contexte strict, de manière à ne pas sortir de son rôle. Vous pouvez dès maintenant tester 
               le chat, mais il n'est utilisable que coté client.
             </div>
             {conversation && conversation.map((msg, index) => (
