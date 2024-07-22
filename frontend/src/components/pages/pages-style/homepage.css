@@ -26,15 +26,12 @@
   padding: 20px;
 }
 
-
 .section-container h1 {
   font-size: 2.5rem;
   margin-top: 250px;
   margin-bottom: 8%;
   font-weight: normal;
-  /*font-family: 'Courier New', Courier, monospace;*/
-  /*font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;*/
-  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   letter-spacing: 0.5ch;
   color: black;
 }
@@ -74,22 +71,12 @@
 
   .section-container h1 {
     font-size: 22px;
-    margin-top: 450px;
-    color: black;
-  }
-
-  .section-container {
     margin-top: 0px;
-    min-height: 100vh;
-  }
-  .section-container h1 {
-    margin-top: 100px;
     margin-bottom: 8%;
     font-weight: normal;
-    /*font-family: 'Courier New', Courier, monospace;*/
-    /*font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;*/
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     letter-spacing: 0.5ch;
     color: black;
   }
+  
 }

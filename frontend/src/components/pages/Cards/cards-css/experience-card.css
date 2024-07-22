@@ -62,7 +62,7 @@
   text-align: center;
 }
 
-.card-date{
+.card-date {
   font-size: 0.9rem;
   color: #666;
 }
@@ -99,7 +99,7 @@
 
 .card-status {
   font-size: 1rem;
-  font-weight:lighter;
+  font-weight: lighter;
   color: rgb(0, 0, 0);
   border-radius: 5px;
 }
@@ -126,8 +126,6 @@
 
   .card-image {
     margin-top: 10px;
-    /*width: 100%;*/
-    /*height: 100%;*/
     border-radius: 5px;
     margin-bottom: 10px;
   }
@@ -151,13 +149,13 @@
     margin-bottom: 2px;
     padding-bottom: 0px;
   }
-  
+
   .card-description {
     font-size: 1rem;
     margin-top: 2px;
     margin-bottom: 2px;
   }
-  
+
   .card-description-techs {
     margin-top: 5px;
     font-size: 19px;
@@ -172,14 +170,14 @@
 @media only screen and (max-width: 750px) {
   .card-container {
     margin-top: 70px;
-    margin-bottom: -350px;
+    margin-bottom: 200px;
   }
 
   .card {
     height: calc(16em + 25px);
     width: 90%;
     padding: 5px;
-    margin: 4% auto;
+    margin: 4% auto 50px auto; /* Add margin-bottom to separate cards */
     border-top: 1px solid #333;
     border-bottom: 1px solid #333;
     border-left: 1px solid #333;
@@ -194,7 +192,7 @@
     border-radius: 5px;
     margin-bottom: 10px;
   }
-  
+
   .card-title {
     font-size: 18px;
     margin-top: -10px;
@@ -215,7 +213,7 @@
     padding-bottom: 0px;
     font-weight: bold;
   }
-  
+
   .card-description {
     font-size: 15px;
     margin-top: 2px;
@@ -228,6 +226,7 @@
     font-weight: bold;
   }
 }
+
 
 @media only screen and (max-width: 615px) {
   .card {
@@ -269,7 +268,7 @@
     padding-bottom: 0px;
     font-weight: bold;
   }
-  
+
   .card-description {
     font-size: 13px;
     margin-top: 2px;

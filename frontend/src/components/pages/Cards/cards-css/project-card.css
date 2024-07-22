@@ -193,10 +193,11 @@
   .project-card-container {
     width: 100%;
     margin: auto;
-    margin-bottom: - 100px;
+    margin-bottom: 20px;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-wrap: wrap;  /* Permet aux cartes de se réorganiser en fonction de l'espace disponible */
+    justify-content: center;
+    gap: 20px;  /* Espace entre les cartes */
   }
   
   .hover-message {
@@ -208,21 +209,22 @@
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    width: 60%;
-    margin: 5% auto;
-    padding: 3px;
+    width: 90%;  /* Ajuster la largeur pour mieux utiliser l'espace */
+    max-width: 300px;  /* Limite maximale pour la largeur */
+    margin: 10px;  /* Marges pour espacer les cartes */
+    padding: 10px;
   }
 
   .project-card-image {
-    width: 85%;
+    width: 100%;
     border-radius: 0px;
-    margin-bottom: 0px;
+    margin-bottom: 10px;
   }
 
   .github-icon {
-    margin-top: 3em;
+    margin-top: 2em;
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
   }
 
   .project-card-title {
@@ -233,27 +235,28 @@
     margin-bottom: 10px;
     border-bottom: 1px solid #ccc;
     width: 100%;
-    padding-bottom: 0px;
+    padding-bottom: 10px;
     text-align: center;
   }
   
   .project-card-date {
     font-size: 0.9rem;
     color: #666;
+    margin-bottom: 10px;
   }
   
   .project-card-description {
     font-size: 14px;
     margin-top: 2px;
     margin-bottom: 5px;
-    
+    text-align: center;
   }
   
   .project-card-techs {
     margin-top: 5px;
     font-size: 14px;
-    font-display:initial ;
     color: rgba(0, 0, 0, 0.568);
     font-weight: normal;
+    text-align: center;
   }
 }

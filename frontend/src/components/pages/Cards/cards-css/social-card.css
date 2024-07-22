@@ -76,7 +76,7 @@
 
 @media only screen and (max-width: 750px) {
   .social-card-container {
-    margin-bottom: 50px;
+    margin-bottom: 0px;
 
   }
   .social-card {
